@@ -29,7 +29,7 @@ componentes
       profile/
       register/
       login/
-    news/
+    detail-new/
     home/
     page404/
     admin/
