@@ -1,6 +1,6 @@
 # NewsSystem
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
+Proyecto generado por [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
 ## Development server
 
@@ -14,14 +14,39 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Descripcion
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Sistema de noticias en la cual se estara presentando una pagina web donde se muestre las noticias de technologia.
 
-## Running end-to-end tests
+## Estructura de la pagina
+---------------------------
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+componentes
+  components/
+    navbar/
+    user/
+      profile/
+      register/
+      login/
+    news/
+    home/
+    page404/
+    admin/
+      list-news/
 
-## Further help
+providers
+  auth/
+  data-news
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+modals
+  news/
+  user/
+
+pipes
+
+guards
+```
+
+## Base de datos NoSQL
+En este proyecto utlizare Firebase para guardar todas las noticas
