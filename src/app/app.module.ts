@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ListNewsComponent } from './components/admin/list-news/list-news.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,11 @@ import { ListNewsComponent } from './components/admin/list-news/list-news.compon
     HomeComponent,
     Page404Component,
     AdminComponent,
-    ListNewsComponent
+    ListNewsComponent,
+    NewsComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule
   ],
   providers: [],
