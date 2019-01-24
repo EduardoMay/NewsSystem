@@ -14,13 +14,13 @@
     </ul>
     <ul class="navbar-nav ml-md-auto">
       <li class="nav-item">
-        <a class="btn btn-primary" routerLink="user/login">Login</a>
+        <a class="btn btn-primary" routerLink="user/login" *ngIf="!statusLogin">Login</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-primary" routerLink="user/registro">Registrate</a>
+        <a class="btn btn-primary" routerLink="user/registro" *ngIf="!statusLogin">Registrate</a>
       </li>
       <li class="nav-item" *ngIf="statusLogin">
-        <a class="btn btn-primary" href="#">Signup</a>
+        <a class="btn btn-primary" (click)="onLogout()" href="#">Signup</a>
       </li>
     </ul>
   </div>

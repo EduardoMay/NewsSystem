@@ -28,7 +28,11 @@ export class AuthService {
 
   public loginGoogle() {}
 
-  public logoutUser() {}
+  public logoutUser() {
+    return this._afService.auth.signOut();
+  }
 
-  public isAuth() {}
+  public isAuth() {
+    return this._afService.authState.pipe( map( isAuth => isAuth));
+  }
 }
