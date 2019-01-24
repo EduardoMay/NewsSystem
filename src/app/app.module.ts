@@ -15,6 +15,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListNewsComponent } from './components/admin/list-news/list-news.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NewsComponent } from './components/news/news.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NewsComponent } from './components/news/news.component';
     Page404Component,
     AdminComponent,
     ListNewsComponent,
-    NewsComponent
+    NewsComponent,
+    FooterComponent
   ],
   imports: [
     AppRoutingModule,
