@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.form-control.login-user {
+  border: 0 solid #fff !important;
+}
+
+.btn-social{
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  border-color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.btn-facebook{
+  background-color: #3b5998;
+}
+
+.btn-google{
+  background-color: #dd4b39;
+}
