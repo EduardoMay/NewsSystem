@@ -1,0 +1,13 @@
+.img{
+  width: 200px;
+}
+
+@media only screen and (max-width: 768px) {
+  .float-left{
+    float: none;
+  }
+
+  .img {
+    width: 100%;
+  }
+}
