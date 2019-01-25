@@ -1,7 +1,8 @@
 <div class="container">
   <div class="text-center" style="padding: 150px">
-    <img src="https://semantic-ui.com/images/wireframe/image.png" class="img-thumbnail rounded-circle img-profile" alt="...">
-    <h3>Eduardo May</h3>
-    <p>eduardo_may@outlook.com</p>
+    <img src="https://semantic-ui.com/images/wireframe/image.png" *ngIf="!user.photoUrl" class="img-thumbnail rounded-circle img-profile" alt="...">
+    <img [src]="user.photoUrl" *ngIf="user.photoUrl" class="img-thumbnail rounded-circle img-profile" alt="...">
+    <h3>{{ user.name }}</h3>
+    <p>{{ user.email }}</p>
   </div>
 </div>
