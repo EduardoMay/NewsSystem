@@ -24,7 +24,9 @@ export class AuthService {
     });
   }
 
-  public loginFacebook() {}
+  public loginFacebook() {
+    return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() );
+  }
 
   public loginGoogle() {}
 

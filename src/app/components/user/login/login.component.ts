@@ -38,7 +38,15 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  onLoginFacebook() {}
+  onLoginFacebook() {
+    this._authService.loginFacebook()
+      .then( res => {
+        console.log('Usuario logeado con facebook');
+        this.onLoginRedirect();
+      }).catch( err => {
+        console.log('Error al iniciar sesion facebook', err.message);
+      });
+  }
 
   onLoginGoogle() {}
 
