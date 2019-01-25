@@ -48,7 +48,15 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  onLoginGoogle() {}
+  onLoginGoogle() {
+    this._authService.loginGoogle()
+      .then( res => {
+        console.log('Usuario logeado con google');
+        this.onLoginRedirect();
+      }).catch( err => {
+        console.log('Error al iniciar sesion con google');
+      });
+  }
 
   public onLoginRedirect() {
     this.router.navigate(['inicio']);
