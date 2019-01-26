@@ -25,6 +25,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
     AdminComponent,
     ListNewsComponent,
     NewsComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
   ],
   imports: [
     AppRoutingModule,
