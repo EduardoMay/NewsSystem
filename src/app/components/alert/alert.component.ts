@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
+  public mensaje = '';
+
   constructor() { }
 
   ngOnInit() {
