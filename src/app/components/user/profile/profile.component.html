@@ -1,8 +1,41 @@
 <div class="container">
+  <div class="row" *ngIf="alertAct">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert">
+        {{ alertMessage }}
+      </div>
+    </div>
+  </div>
   <div class="text-center" style="padding: 150px">
     <img src="https://semantic-ui.com/images/wireframe/image.png" *ngIf="!user.photoUrl" class="img-thumbnail rounded-circle img-profile" alt="...">
     <img [src]="user.photoUrl" *ngIf="user.photoUrl" class="img-thumbnail rounded-circle img-profile" alt="...">
     <h3>{{ user.name }}</h3>
     <p>{{ user.email }}</p>
+    <button class="btn btn-success" (click)="btnUpdatePhoto()" *ngIf="!divUpdatePhoto">Actulizar foto</button>
+    <div class="card" *ngIf="divUpdatePhoto">
+      <div class="card-body text-center">
+        <form (ngSubmit)="uploadImagenUser()">
+          <h3 class="h3 font-weight-normal">
+            Subir imegen
+          </h3>
+          <div class="form-group">
+            <input  type="file" class="form-control" accept=".png, .jpg"
+                    (change)="onUpload($event)">
+          </div>
+          <div class="progress mb-3">
+            <div  [style.width]="(uploadPercent | async) + '%'"
+                  class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                  {{ uploadPercent | async}}%
+            </div>
+          </div>
+          <input type="hidden" #imageUser [value]="urlImage | async">
+          <button *ngIf="urlImage | async; else btnDisable"
+                  type="submit" class="btn btn-lg btn-primary btn-block">Guardar</button>
+          <ng-template #btnDisable>
+              <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">Guardar</button>
+          </ng-template>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
