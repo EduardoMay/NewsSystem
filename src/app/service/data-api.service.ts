@@ -16,6 +16,9 @@ export class DataApiService {
   public news: Observable<NewInterface[]>;
   private newsDoc: AngularFirestoreDocument<NewInterface>;
   private new: Observable<NewInterface>;
+  public selectedNew: NewInterface = {
+    id: null
+  };
 
   constructor(private angularFirestor: AngularFirestore) {
     this.newsCollection = this.angularFirestor.collection<NewInterface>('news');
@@ -32,6 +35,10 @@ export class DataApiService {
           return data;
         });
       }));
+  }
+
+  public addNew(newInfo: NewInterface): void {
+    this.newsCollection.add(newInfo);
   }
 
 }
