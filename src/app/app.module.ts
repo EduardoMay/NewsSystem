@@ -17,6 +17,7 @@ import { ListNewsComponent } from './components/admin/list-news/list-news.compon
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NewsComponent } from './components/news/news.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 // firebase
 import { environment } from '../environments/environment';
@@ -41,7 +42,8 @@ import { AlertComponent } from './components/alert/alert.component';
     ListNewsComponent,
     NewsComponent,
     FooterComponent,
-    AlertComponent
+    AlertComponent,
+    ModalComponent
   ],
   imports: [
     AppRoutingModule,
