@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-  public news: NewInterface[] = [];
+  public news = [];
   public new = '';
 
   constructor(private _dataApi: DataApiService) { }

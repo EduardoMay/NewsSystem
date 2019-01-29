@@ -8,10 +8,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" *ngFor="let new of news">
-        <img src="https://semantic-ui.com/images/wireframe/image.png" style="height: 500px;" class="d-block w-100" alt="...">
+        <img [src]="new.urlImage" style="height: 500px;" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>{{ new.titulo }}</h5>
-          <p>{{ new.descripcion }}</p>
+          <p>{{ new.descripcion | slice:0:150 }}...</p>
         </div>  
       </div>
     </div>
@@ -26,58 +26,12 @@
   </div>
   <!-- /carousel -->
   <hr>
-  <div class="card mb-3 mt-3">
-    <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" style="height: 250px;" alt="...">
+  <div class="card mb-3 mt-3" *ngFor="let new of news">
+    <img [src]="new.urlImage" class="card-img-top" style="height: 250px;" [alt]="new.titulo">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card mb-3 mt-3">
-    <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" style="height: 250px;" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-
-  <!-- card-group -->
-  <div class="card-group">
-    <div class="card">
-      <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-  <!-- /card-group -->
-  
-  <div class="card mb-3 mt-3">
-    <img src="https://semantic-ui.com/images/wireframe/image.png" class="card-img-top" style="height: 250px;" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <h5 class="card-title">{{new.titulo}}</h5>
+      <p class="card-text">{{new.descripcion | slice:0:250}}...</p>
+      <p class="card-text"><small class="text-muted">{{ new.fecha }}</small><span class="badge badge-primary ml-2">{{ new.autor }}</span></p>
     </div>
   </div>
 </div>
