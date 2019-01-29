@@ -1,3 +1,38 @@
-<p>
-  list-news works!
-</p>
+<div class="container">
+  <h1 class="h1">Listado de noticias</h1>
+  <hr>
+  <button class="btn btn-primary mb-2"
+    data-toggle="modal"
+    data-target="#modalNew">Agregar</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let new of news; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ new.titulo }}
+        </td>
+        <td>
+          {{ new.autor }}
+        </td>
+        <td>
+          {{ new.fecha }}
+        </td>
+        <td>
+          <button class="btn btn-warning mr-1">Actualizar</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-modal></app-modal>
