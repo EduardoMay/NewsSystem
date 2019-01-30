@@ -1,3 +1,14 @@
-<div class="alert alert-success" role="alert">
-  {{ mensaje }}
+<!-- <div class="alert alert-{{mensaje.tipo}} mt-5" role="alert">
+  {{ mensaje.mensaje }}
+</div> -->
+
+<div id="notfound">
+  <div class="notfound">
+    <div class="notfound-404">
+      <h1>{{alert.status}}</h1>
+    </div>
+    <h2>{{alert.mensaje}}</h2>
+    <p>{{alert.descripcion}}</p>
+    <a routerLink="home" *ngIf="alert.status === 404">Ir al inicio</a>
+  </div>
 </div>

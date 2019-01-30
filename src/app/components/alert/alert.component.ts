@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AlertInterface } from 'src/app/models/alert';
 
 @Component({
   selector: 'app-alert',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
-  public mensaje = '';
+  @Input() alert: AlertInterface = {
+    mensaje: '',
+    descripcion: '',
+    tipo: '',
+    status: null,
+  };
 
   constructor() { }
 

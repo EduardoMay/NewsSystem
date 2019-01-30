@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewInterface } from 'src/app/models/new';
 import { DataApiService } from 'src/app/service/data-api.service';
+import { AlertInterface } from 'src/app/models/alert';
 
 declare var $: any;
 
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   public news = [];
   public new = '';
+  public alert: AlertInterface;
 
   constructor(private _dataApi: DataApiService) { }
 
@@ -21,9 +23,20 @@ export class HomeComponent implements OnInit {
       interval: 3000,
       wrap: true
     });
+
     this._dataApi.getAllNews().subscribe( news => {
-      console.log('Noticias: ', news);
-      this.news = news;
+      if (news.length > 0) {
+        this.news = news;
+        console.log('Noticias: ', news);
+      } else {
+        this.alert = {
+          mensaje: 'Error en el servidor Firebase',
+          descripcion: 'Error al obtener registros de la base de datos...',
+          tipo: 'danger',
+          status: 500
+        };
+        console.log(this.alert);
+      }
     });
   }
 

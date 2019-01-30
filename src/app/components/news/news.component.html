@@ -1,39 +1,18 @@
 <div class="container">
-  <div class="card m-3 shadow">
+  <!-- Alerta -->
+  <app-alert [alert]="alert" *ngIf="alert"></app-alert>
+  <!-- /Alerta -->
+  <div class="card m-3 shadow" *ngFor="let new of news">
     <div class="card-header">
-      Quote
+      {{ new.titulo }}
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <img src="https://semantic-ui.com/images/wireframe/image.png" class="img img-fluid img-thumbnail float-left m-2" alt="...">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </blockquote>
-    </div>
-  </div>
-  <div class="card m-3 shadow">
-    <div class="card-header">
-      Quote
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <img src="https://semantic-ui.com/images/wireframe/image.png" class="img img-fluid img-thumbnail float-left m-2" alt="...">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </blockquote>
-    </div>
-  </div>
-  <div class="card m-3 shadow">
-    <div class="card-header">
-      Quote
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <img src="https://semantic-ui.com/images/wireframe/image.png" class="img img-fluid img-thumbnail float-left m-2" alt="...">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        <img [src]="new.urlImage" class="img img-fluid img-thumbnail float-left m-2" alt="...">
+        <p>{{ new.descripcion }}</p>
+        <footer class="blockquote-footer">
+          <p class="card-text"><small class="text-muted">{{ new.fecha }}</small><span class="badge badge-primary ml-2">{{ new.autor }}</span></p>
+        </footer>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </blockquote>
     </div>
