@@ -21,4 +21,11 @@ export class ListNewsComponent implements OnInit {
     });
   }
 
+  public onDeleteNew( idNew: string ): void {
+    const confirmation = confirm('Deseas eliminarlo?');
+    if (confirmation) {
+      this._dataApi.deleteNew( idNew );
+    }
+  }
+
 }
