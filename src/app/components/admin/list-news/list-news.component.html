@@ -28,7 +28,9 @@
           {{ new.fecha }}
         </td>
         <td>
-          <button class="btn btn-warning mr-1" style="color: #ffffff;">Actualizar</button>
+          <button class="btn btn-warning mr-1" style="color: #ffffff;"
+            data-toggle="modal" data-target="#modalNew"
+            (click)="onPreUpdateNew(new)">Actualizar</button>
         </td>
         <td>
           <button class="btn btn-danger" (click)="onDeleteNew(new.id)">Eliminar</button>
@@ -38,4 +40,4 @@
   </table>
 </div>
 
-<app-modal></app-modal>
+<app-modal [userId]="userUid"></app-modal>

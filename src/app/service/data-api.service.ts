@@ -77,6 +77,18 @@ export class DataApiService {
     this.newsCollection.add(newInfo);
   }
 
+  /**
+   * Actualizar registro
+  */
+  public updateNew( newData: NewInterface ) {
+    const idNew = newData.id;
+    this.newsDoc = this.angularFirestore.doc<NewInterface>(`news/${idNew}`);
+    this.newsDoc.update(newData);
+  }
+
+  /**
+   * Eliminar registro
+  */
   public deleteNew( idNew: string ) {
     this.newsDoc = this.angularFirestore.doc<NewInterface>(`news/${idNew}`);
     this.newsDoc.delete();
