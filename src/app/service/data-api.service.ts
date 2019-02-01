@@ -77,4 +77,9 @@ export class DataApiService {
     this.newsCollection.add(newInfo);
   }
 
+  public deleteNew( idNew: string ) {
+    this.newsDoc = this.angularFirestore.doc<NewInterface>(`news/${idNew}`);
+    this.newsDoc.delete();
+  }
+
 }
