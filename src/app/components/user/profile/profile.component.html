@@ -11,7 +11,12 @@
     <img [src]="user.photoUrl" *ngIf="user.photoUrl" class="img-thumbnail rounded-circle img-profile" alt="...">
     <h3>{{ user.name }}</h3>
     <p>{{ user.email }}</p>
-    <button class="btn btn-success" (click)="btnUpdatePhoto()" *ngIf="!divUpdatePhoto">Actulizar foto</button>
+
+    <!-- Boton para mostrar la caja para subir foto de perfil -->
+    <button class="btn btn-success" 
+      *ngIf="!divUpdatePhoto"  
+      (click)="btnUpdatePhoto()">Actulizar foto</button>
+
     <a routerLink="/listado" class="btn btn-primary ml-1">Listado de noticias</a>
     <div class="card" *ngIf="divUpdatePhoto">
       <div class="card-body text-center">
