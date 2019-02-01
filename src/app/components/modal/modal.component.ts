@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { NgForm } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 export class ModalComponent implements OnInit {
 
   @Input() userId: string;
+  @ViewChild('btnClose') btnClose: ElementRef;
 
   constructor(public _dataApi: DataApiService) { }
 
@@ -27,6 +28,7 @@ export class ModalComponent implements OnInit {
       this._dataApi.updateNew(formNew.value);
     }
     formNew.resetForm();
+    this.btnClose.nativeElement.click();
   }
 
 }
