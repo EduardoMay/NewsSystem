@@ -1,3 +1,8 @@
-<p>
-  detail-new works!
-</p>
+<div class="bg_img" [ngStyle]="{'background-image' : 'url(' + urlimage + ')'}"></div>
+
+<div class="container m-5">
+  <p>
+    {{ new.descripcion }}
+  </p>
+  <h6>{{new.fecha}} <span class="badge badge-secondary">{{new.autor}}</span></h6>
+</div>

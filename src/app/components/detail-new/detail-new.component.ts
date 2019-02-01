@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailNewComponent implements OnInit {
 
   public new: NewInterface = {};
+  public urlimage = '';
 
   constructor(private _dataApiService: DataApiService,
     private route: ActivatedRoute) { }
@@ -24,6 +25,8 @@ export class DetailNewComponent implements OnInit {
     this._dataApiService.getOneNew( idbook ).subscribe( newDetail => {
       console.log('noticia', newDetail);
       this.new = newDetail;
+      this.urlimage = this.new.urlImage;
+      console.log(this.urlimage);
     });
   }
 
