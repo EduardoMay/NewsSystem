@@ -10,7 +10,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active" *ngFor="let new of news">
+      <div class="carousel-item" *ngFor="let new of news; let primero = first;" [ngClass]="{'active': primero}">
         <img [src]="new.urlImage" style="height: 500px;" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>{{ new.titulo }}</h5>
