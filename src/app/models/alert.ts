@@ -1,6 +1,7 @@
 export interface AlertInterface {
-  mensaje: string;
-  descripcion: string;
-  tipo: string;
-  status: number;
+  mensaje?: string;
+  descripcion?: string;
+  tipo?: string;
+  status?: number;
+  active?: boolean;
 }
