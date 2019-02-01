@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 /* You can add global styles to this file, and also import other style files */
 .form-control.login-user {
   border: 0 solid #fff !important;
@@ -23,7 +24,7 @@
 }
 
 /* Pagina de error404 */
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
 
 #notfound .notfound {
   margin: 80px auto;
