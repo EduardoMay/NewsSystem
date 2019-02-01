@@ -24,8 +24,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AlertComponent } from './components/alert/alert.component';
+
+// scrollreveal
+import { NgsRevealModule } from 'ng-scrollreveal';
 
 @NgModule({
   declarations: [
@@ -50,11 +53,13 @@ import { AlertComponent } from './components/alert/alert.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgsRevealModule.forRoot()
   ],
   providers: [
     AngularFireAuth,
-    AngularFirestore
+    AngularFirestore,
+    { provide: FirestoreSettingsToken, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })
