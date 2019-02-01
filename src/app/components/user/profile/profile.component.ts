@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
   }; // datos de la persona logeada
   public providerId = 'null'; // id del perfil
 
+  public username = '';
   public uploadPercent: Observable<number>; // pocentaje de la subida de la imagen
   public urlImage: Observable<string>; // url de la imagen donde se guarda en la base de datos
   @ViewChild('imageUser') inputImageUser: ElementRef;
@@ -50,9 +51,11 @@ export class ProfileComponent implements OnInit {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         this.user.name = userData.displayName;
+        this.username = userData.displayName;
         this.user.email = userData.email;
         this.user.photoUrl = userData.photoURL;
         this.providerId = userData.providerData[0].providerId;
+        console.log('Datos del usuario: ', userData);
         // console.log('Datos del usuario: ', this.providerId);
       }
     });
@@ -65,13 +68,41 @@ export class ProfileComponent implements OnInit {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         userData.updateProfile({
-          displayName: '',
+          displayName: this.username,
           photoURL: this.inputImageUser.nativeElement.value
         }).then( () => {
           console.log('Usuario actualizado');
           // Alerta
           this.alertMessage = 'Has actualizado tus datos';
           this.alertAct = true;
+          // Esconder el cuadro para subir foto
+          this.divUpdatePhoto = false;
+          setTimeout(() => {
+            this.alertAct = false;
+          }, 3000);
+        }).catch( () => {
+          console.log('Error al actualizar perfil');
+        });
+      }
+    });
+  }
+
+  /**
+   * guardar el url de la imagen en los datos del perfil
+  */
+  public uploadUsernameUser() {
+    this._authService.isAuth().subscribe( userData => {
+      if ( userData ) {
+        userData.updateProfile({
+          displayName: this.username,
+          photoURL: this.user.photoUrl
+        }).then( () => {
+          console.log('Usuario actualizado');
+          // Alerta
+          this.alertMessage = 'Has actualizado tus datos';
+          this.alertAct = true;
+          // Actualizar foto de perfil
+          this.user.name = userData.displayName;
           // Esconder el cuadro para subir foto
           this.divUpdatePhoto = false;
           setTimeout(() => {
