@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NewInterface } from 'src/app/models/new';
+import { DataApiService } from 'src/app/service/data-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-new',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailNewComponent implements OnInit {
 
-  constructor() { }
+  public new: NewInterface = {};
+
+  constructor(private _dataApiService: DataApiService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const idNew = this.route.snapshot.params['id'];
+    this.getDetails(idNew);
+  }
+
+  public getDetails( idbook: string ): void {
+    this._dataApiService.getOneNew( idbook ).subscribe( newDetail => {
+      console.log('noticia', newDetail);
+      this.new = newDetail;
+    });
   }
 
 }

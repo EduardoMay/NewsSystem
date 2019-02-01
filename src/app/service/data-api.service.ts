@@ -34,9 +34,9 @@ export class DataApiService {
     id: null
   };
 
-  constructor(private angularFirestor: AngularFirestore) {
+  constructor(private angularFirestore: AngularFirestore) {
     // guarda todas las colecciones obtenidad de la base de datos
-    this.newsCollection = this.angularFirestor.collection<NewInterface>('news');
+    this.newsCollection = this.angularFirestore.collection<NewInterface>('news');
     this.news = this.newsCollection.valueChanges();
   }
 
@@ -53,6 +53,22 @@ export class DataApiService {
         });
       }));
   }
+
+  /**
+   * obtener un registro
+  */
+ public getOneNew( idbook: string ) {
+   this.newsDoc = this.angularFirestore.doc<NewInterface>(`news/${idbook}`);
+   return this.new = this.newsDoc.snapshotChanges().pipe( map( action => {
+     if ( action.payload.exists === false) {
+       return null;
+     } else {
+       const data = action.payload.data() as NewInterface;
+       data.id = action.payload.id;
+       return data;
+     }
+   }));
+ }
 
   /**
    * guardar una noticias nueva a firebase

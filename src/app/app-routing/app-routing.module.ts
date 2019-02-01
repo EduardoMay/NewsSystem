@@ -7,12 +7,14 @@ import { LoginComponent } from '../components/user/login/login.component';
 import { RegisterComponent } from '../components/user/register/register.component';
 import { ProfileComponent } from '../components/user/profile/profile.component';
 import { ListNewsComponent } from '../components/admin/list-news/list-news.component';
+import { DetailNewComponent } from '../components/detail-new/detail-new.component';
 
 const ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: 'inicio', component: HomeComponent },
   { path: 'noticias', component: NewsComponent },
   { path: 'listado', component: ListNewsComponent },
+  { path: 'new/:id', component: DetailNewComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/registro', component: RegisterComponent },
   { path: 'user/perfil', component: ProfileComponent },
