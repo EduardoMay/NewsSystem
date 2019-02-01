@@ -14,7 +14,9 @@ export class HomeComponent implements OnInit {
 
   public news = [];
   public new = '';
-  public alert: AlertInterface;
+  public alert: AlertInterface = {
+    active: false
+  };
 
   constructor(private _dataApi: DataApiService) { }
 
@@ -33,7 +35,8 @@ export class HomeComponent implements OnInit {
           mensaje: 'Error en el servidor Firebase',
           descripcion: 'Error al obtener registros de la base de datos...',
           tipo: 'danger',
-          status: 500
+          status: 500,
+          active: true
         };
         console.log(this.alert);
       }

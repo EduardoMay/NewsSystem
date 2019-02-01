@@ -15,6 +15,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { AlertInterface } from 'src/app/models/alert';
+import { NgsRevealConfig } from 'ng-scrollreveal';
 
 @Component({
   selector: 'app-news',
@@ -26,7 +27,10 @@ export class NewsComponent implements OnInit {
   public news = []; // se guardan todas las noticias obtenidas
   public alert: AlertInterface; // si existe algun error
 
-  constructor(private _dataApi: DataApiService) { }
+  constructor(private _dataApi: DataApiService,
+    config: NgsRevealConfig) {
+      config.duration = 1000;
+  }
 
   ngOnInit() {
     /**

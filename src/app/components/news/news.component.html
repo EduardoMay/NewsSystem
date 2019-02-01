@@ -2,7 +2,7 @@
   <!-- Alerta -->
   <app-alert [alert]="alert" *ngIf="alert"></app-alert>
   <!-- /Alerta -->
-  <div class="card m-3 shadow" *ngFor="let new of news">
+  <div class="card m-3 shadow" *ngFor="let new of news" ngsReveal>
     <div class="card-header">
       {{ new.titulo }}
     </div>
