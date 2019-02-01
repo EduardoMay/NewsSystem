@@ -1,3 +1,17 @@
+/**
+ * @fileoverview LoginComponent, metodos para poder logearnos por medio del
+ * correo, google y facebook
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implemento diferentes metodos para iniciar sesion
+ *
+ * La primara version de LoginComponent fue escrita por Eduardo May
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -10,10 +24,10 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public email;
-  public password;
-  public isError = false;
-  public errorMes = '';
+  public email = ''; // constante donde se guarda el correo del formulario
+  public password = ''; // constante donde se guarda la contraseña del formulario
+  public isError = false; // constante boolean donde se registra si hay error
+  public errorMes = ''; // guarda mensaje de error
 
   constructor(public afAuth: AngularFireAuth,
               private router: Router,
@@ -22,6 +36,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Logearse son correo y contraseña
+  */
   public onLogin(): void {
     this._authService.loginEmailUser( this.email, this.password )
       .then( res => {
@@ -38,7 +55,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  onLoginFacebook() {
+  /**
+   * logearse con facebook
+  */
+  public onLoginFacebook() {
     this._authService.loginFacebook()
       .then( res => {
         console.log('Usuario logeado con facebook');
@@ -48,7 +68,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  onLoginGoogle() {
+  /**
+   * logearse con google
+  */
+  public onLoginGoogle() {
     this._authService.loginGoogle()
       .then( res => {
         console.log('Usuario logeado con google');
@@ -58,6 +81,9 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  /**
+   * redireccionar al iniciao
+  */
   public onLoginRedirect() {
     this.router.navigate(['inicio']);
   }

@@ -1,3 +1,17 @@
+/**
+ * @fileoverview ProfileComponent, metodos para poder poder obtener los datos de la persona
+ * logeado, tambien se declaran metodos para poder actualizar su foto de perfil
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implemento diferentes metodos para obtener datos y actualizar foto de perfil
+ *
+ * La primara version de ProfileComponent fue escrita por Eduardo May
+*/
+
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserInterface } from 'src/app/models/user';
@@ -12,35 +26,41 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  public divUpdatePhoto = false;
-  public alertMessage = '';
-  public alertAct = false;
+  public divUpdatePhoto = false; // true: poder mostrar la caja para poder subir la imagen
+  public alertMessage = ''; // alerta de mensage
+  public alertAct = false; // true: se muestra la alerta
   public user: UserInterface = {
     name: '',
     email: '',
     photoUrl: ''
-  };
-  public providerId = 'null';
+  }; // datos de la persona logeada
+  public providerId = 'null'; // id del perfil
 
-  public uploadPercent: Observable<number>;
-  public urlImage: Observable<string>;
+  public uploadPercent: Observable<number>; // pocentaje de la subida de la imagen
+  public urlImage: Observable<string>; // url de la imagen donde se guarda en la base de datos
   @ViewChild('imageUser') inputImageUser: ElementRef;
 
   constructor(private _authService: AuthService,
               private angStorage: AngularFireStorage) { }
 
   ngOnInit() {
+    /**
+     * Obtiene las propiedades del perfil
+    */
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         this.user.name = userData.displayName;
         this.user.email = userData.email;
         this.user.photoUrl = userData.photoURL;
         this.providerId = userData.providerData[0].providerId;
-        console.log('Datos del usuario: ', this.providerId);
+        // console.log('Datos del usuario: ', this.providerId);
       }
     });
   }
 
+  /**
+   * guardar el url de la imagen en los datos del perfil
+  */
   public uploadImagenUser() {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
@@ -64,6 +84,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * guarda la imagen en firestore
+  */
   public onUpload(e) {
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
@@ -77,6 +100,9 @@ export class ProfileComponent implements OnInit {
     })).subscribe();
   }
 
+  /**
+   * muestra la parte donde se actualiza la foto
+  */
   public btnUpdatePhoto() {
     this.divUpdatePhoto = true;
   }

@@ -9,15 +9,15 @@
               <form #formRegister="ngForm" (ngSubmit)="onRegister()">
                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 <div class="form-group">
-                  <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="email" required
-                    minlength="8">
+                  <input type="email" name="email" class="form-control" placeholder="Correo" 
+                    [(ngModel)]="email" required minlength="8">
                 </div>
                 <div class="form-group">
-                  <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password"
-                    required minlength="5">
+                  <input type="password" name="password" class="form-control" placeholder="Contraseña" 
+                  [(ngModel)]="password" required minlength="5">
                 </div>
                 <div class="form-group">
-                  <a routerLink="/user/login" class="form-control login-user">Do you have account?</a>
+                  <a routerLink="/user/login" class="form-control login-user">Ya tienes una cuenta?</a>
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>

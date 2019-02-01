@@ -1,3 +1,17 @@
+/**
+ * @fileoverview NewsComponent, se implementan diferentes metodos donde se consume la servicio
+ * de DataApiService, en este componente solo se onbtienen las noticias
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se obtienen las noticias mediante el servicio getAllNews()
+ *
+ * La primara version de NewsComponent fue escrita por Eduardo May
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { AlertInterface } from 'src/app/models/alert';
@@ -9,12 +23,15 @@ import { AlertInterface } from 'src/app/models/alert';
 })
 export class NewsComponent implements OnInit {
 
-  public news = [];
-  public alert: AlertInterface;
+  public news = []; // se guardan todas las noticias obtenidas
+  public alert: AlertInterface; // si existe algun error
 
   constructor(private _dataApi: DataApiService) { }
 
   ngOnInit() {
+    /**
+     * se obtiene todas las noticias
+    */
     this._dataApi.getAllNews().subscribe( news => {
       if ( news.length > 0 ) {
         console.log('Status 200');

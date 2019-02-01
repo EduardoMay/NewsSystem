@@ -21,17 +21,17 @@
           </h3>
           <div class="form-group">
             <input  type="file" class="form-control" accept=".png, .jpg"
-                    (change)="onUpload($event)">
+              (change)="onUpload($event)">
           </div>
           <div class="progress mb-3">
-            <div  [style.width]="(uploadPercent | async) + '%'"
-                  class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  {{ uploadPercent | async}}%
+            <div [style.width]="(uploadPercent | async) + '%'"
+              class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              {{ uploadPercent | async}}%
             </div>
           </div>
           <input type="hidden" #imageUser [value]="urlImage | async">
           <button *ngIf="urlImage | async; else btnDisable"
-                  type="submit" class="btn btn-lg btn-primary btn-block">Guardar</button>
+            type="submit" class="btn btn-lg btn-primary btn-block">Guardar</button>
           <ng-template #btnDisable>
               <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">Guardar</button>
           </ng-template>

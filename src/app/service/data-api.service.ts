@@ -1,3 +1,17 @@
+/**
+ * @fileoverview DataApiService, en este servicio se implementan diferentes metodos
+ * para obtener datos de la base de datos
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implemento el CRUD
+ *
+ * La primara version de DataApiService fue escrita por Eduardo May
+*/
+
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
@@ -21,11 +35,14 @@ export class DataApiService {
   };
 
   constructor(private angularFirestor: AngularFirestore) {
+    // guarda todas las colecciones obtenidad de la base de datos
     this.newsCollection = this.angularFirestor.collection<NewInterface>('news');
     this.news = this.newsCollection.valueChanges();
   }
 
-  // obtener todas las noticias
+  /**
+   * obtener todas las noticias de firebase
+  */
   public getAllNews() {
     return this.news = this.newsCollection.snapshotChanges()
       .pipe( map( changes => {
@@ -37,6 +54,9 @@ export class DataApiService {
       }));
   }
 
+  /**
+   * guardar una noticias nueva a firebase
+  */
   public addNew(newInfo: NewInterface): void {
     this.newsCollection.add(newInfo);
   }
