@@ -1,3 +1,16 @@
+/**
+ * @fileoverview Routes, uso de las rutas amigables
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implemento el uso de las rutas amigables
+ *
+ * La primara version de Routes fue escrita por Eduardo May
+*/
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../components/home/home.component';

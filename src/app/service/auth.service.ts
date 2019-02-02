@@ -85,19 +85,25 @@ export class AuthService {
     return this._afService.authState.pipe( map( isAuth => isAuth));
   }
 
+  /**
+   * actualiza la informacion del usuario
+  */
   public updateUserData( user ) {
     const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${user.uid}`);
     const data: UserInterface = {
       id: user.uid,
       email: user.email,
       roles: {
-        editor: true
+        usuario: true
       }
     };
 
     return userRef.set(data, {merge: true});
   }
 
+  /**
+   * obtiene el registro de un usuario
+  */
   public isUserAdmin( userUid: string ) {
     return this.aFirestore.doc<UserInterface>(`users/${userUid}`).valueChanges();
   }

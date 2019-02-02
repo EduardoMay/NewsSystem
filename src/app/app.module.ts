@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NewsComponent } from './components/news/news.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 // firebase
 import { environment } from '../environments/environment';
@@ -25,7 +26,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore, FirestoreSettingsToken } from '@angular/fire/firestore';
-import { AlertComponent } from './components/alert/alert.component';
 
 // scrollreveal
 import { NgsRevealModule } from 'ng-scrollreveal';

@@ -57,7 +57,7 @@ export class DataApiService {
   /**
    * obtener un registro
   */
- public getOneNew( idbook: string ) {
+  public getOneNew( idbook: string ) {
    this.newsDoc = this.angularFirestore.doc<NewInterface>(`news/${idbook}`);
    return this.new = this.newsDoc.snapshotChanges().pipe( map( action => {
      if ( action.payload.exists === false) {

@@ -1,3 +1,17 @@
+/**
+ * @fileoverview RegisterComponent, se emplean el metodo para registrar un usuario por
+ * medio del correo y una contraseña, la contraseña no se guarda en la base de datos
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implementa el metodo de registro
+ *
+ * La primara version de RegisterComponent fue escrita por Eduardo May
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
@@ -9,14 +23,17 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public email = '';
-  public password = '';
+  public email = ''; // correo a registra
+  public password = ''; // contraseña
 
   constructor(private _authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  /**
+   * registro de usuario
+   */
   public onRegister() {
     this._authService.registerUser(this.email, this.password)
       .then( res => {
@@ -24,8 +41,14 @@ export class RegisterComponent implements OnInit {
       }).catch( err => console.log('Error al registrarte:', err.message));
   }
 
+  /**
+   * login con facebook
+   */
   public onLoginFacebook() {}
 
+  /**
+   * login con google
+   */
   public onLoginGoogle() {}
 
 }
