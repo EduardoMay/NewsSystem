@@ -33,6 +33,9 @@ import { NgsRevealModule } from 'ng-scrollreveal';
 // spinner
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+// ngx-pagination
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     NgsRevealModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [
     AngularFireAuth,

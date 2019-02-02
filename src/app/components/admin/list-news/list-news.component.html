@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let new of news; index as i">
+      <tr *ngFor="let new of news | paginate: { itemsPerPage: 10, currentPage: pageActual }; index as i">
         <th scope="row">{{ i + 1 }}</th>
         <td>
           {{ new.titulo }}
@@ -52,6 +52,16 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls 
+    (pageChange)="pageActual = $event"
+    directionLinks="true"
+    autoHide="true"
+    responsive="true"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"></pagination-controls>
 </div>
 
 <app-modal [userUid]="userUid"></app-modal>

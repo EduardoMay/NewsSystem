@@ -13,6 +13,7 @@ export class ListNewsComponent implements OnInit {
   public news: NewInterface[] = [];
   public isAdmin: any = null;
   public userUid = null;
+  public pageActual = 1;
 
   constructor(private _dataApi: DataApiService,
     private _authService: AuthService) { }
