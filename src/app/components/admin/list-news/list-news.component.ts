@@ -11,21 +11,25 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ListNewsComponent implements OnInit {
 
   public news: NewInterface[] = [];
-  // public isAdmin: any = null;
-  public userUid: string = null;
+  public isAdmin: any = null;
+  public userUid = null;
 
   constructor(private _dataApi: DataApiService,
     private _authService: AuthService) { }
 
   ngOnInit() {
-    this.getListNews();
     this.getCurrentUser();
+    this.getListNews();
   }
 
   public getCurrentUser() {
     this._authService.isAuth().subscribe( auth => {
       if (auth) {
         this.userUid = auth.uid;
+        console.log(this.userUid);
+        // this._authService.isUserAdmin( this.userUid ).subscribe( userRole => {
+        //   this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+        // });
       }
     });
   }
@@ -35,6 +39,7 @@ export class ListNewsComponent implements OnInit {
   */
   public getListNews() {
     this._dataApi.getAllNews().subscribe( news => {
+      console.log('noticias', news);
       this.news = news;
     });
   }

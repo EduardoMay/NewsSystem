@@ -9,7 +9,8 @@
       </div>
       <div class="modal-body">
         <form #formNew="ngForm" (ngSubmit)="onSaveNew(formNew)">
-          <input type="text" name="id" [(ngModel)]="_dataApi.selectedNew.id">
+          <input type="hidden" name="id" [(ngModel)]="_dataApi.selectedNew.id">
+          <input type="hidden" name="userUid" [value]="userUid">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Titulo</label>
             <input type="text" class="form-control" id="recipient-name"

@@ -27,17 +27,31 @@
         <td>
           {{ new.fecha }}
         </td>
-        <td>
+        <td *ngIf="new.userUid === userUid || isAdmin == true; else noAdminUpdate">
           <button class="btn btn-warning mr-1" style="color: #ffffff;"
             data-toggle="modal" data-target="#modalNew"
             (click)="onPreUpdateNew(new)">Actualizar</button>
         </td>
-        <td>
+        <ng-template #noAdminUpdate>
+            <td>
+              <button class="btn btn-secondary" disabled>
+                Actualizar
+              </button>
+            </td>
+          </ng-template>
+        <td *ngIf="new.userUid === userUid || isAdmin == true; else noAdminDelete">
           <button class="btn btn-danger" (click)="onDeleteNew(new.id)">Eliminar</button>
         </td>
+        <ng-template #noAdminDelete>
+            <td>
+              <button class="btn btn-secondary" disabled>
+                Eliminar
+              </button>
+            </td>
+          </ng-template>
       </tr>
     </tbody>
   </table>
 </div>
 
-<app-modal [userId]="userUid"></app-modal>
+<app-modal [userUid]="userUid"></app-modal>

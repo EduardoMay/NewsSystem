@@ -17,13 +17,16 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { map } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserInterface } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _afService: AngularFireAuth) { }
+  constructor(private _afService: AngularFireAuth,
+    private aFirestore: AngularFirestore) { }
 
   /**
    * registrar directamente a la base de datos
@@ -31,7 +34,10 @@ export class AuthService {
   public registerUser(email: string, password: string) {
     return new Promise( (resolve, reject) => {
       this._afService.auth.createUserWithEmailAndPassword(email, password)
-        .then( userData => resolve(userData), err => reject(err));
+        .then( userData => {
+          resolve(userData);
+          this.updateUserData(userData.user);
+        }).catch( err => reject(err));
     });
   }
 
@@ -49,14 +55,20 @@ export class AuthService {
    * login con facebook
   */
   public loginFacebook() {
-    return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() );
+    return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() )
+      .then( credential => {
+        this.updateUserData(credential.user);
+      });
   }
 
   /**
    * login con google
   */
   public loginGoogle() {
-    return this._afService.auth.signInWithPopup( new auth.GoogleAuthProvider() );
+    return this._afService.auth.signInWithPopup( new auth.GoogleAuthProvider() )
+      .then( credential => {
+        this.updateUserData(credential.user);
+      });
   }
 
   /**
@@ -71,5 +83,22 @@ export class AuthService {
   */
   public isAuth() {
     return this._afService.authState.pipe( map( isAuth => isAuth));
+  }
+
+  public updateUserData( user ) {
+    const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${user.uid}`);
+    const data: UserInterface = {
+      id: user.uid,
+      email: user.email,
+      roles: {
+        editor: true
+      }
+    };
+
+    return userRef.set(data, {merge: true});
+  }
+
+  public isUserAdmin( userUid: string ) {
+    return this.aFirestore.doc<UserInterface>(`users/${userUid}`).valueChanges();
   }
 }

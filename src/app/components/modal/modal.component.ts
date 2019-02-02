@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 
 export class ModalComponent implements OnInit {
 
-  @Input() userId: string;
+  @Input() userUid: string;
   @ViewChild('btnClose') btnClose: ElementRef;
 
   constructor(public _dataApi: DataApiService) { }
@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit {
     console.log('Form', formNew.value);
 
     if (formNew.value.id === null) {
-      formNew.value.userId = this.userId;
+      formNew.value.userUid = this.userUid;
       this._dataApi.addNew(formNew.value);
     } else {
       this._dataApi.updateNew(formNew.value);
