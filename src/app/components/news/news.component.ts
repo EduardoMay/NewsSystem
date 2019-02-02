@@ -38,10 +38,10 @@ export class NewsComponent implements OnInit {
     */
     this._dataApi.getAllNews().subscribe( news => {
       if ( news.length > 0 ) {
-        console.log('Status 200');
+        // console.log('Status 200');
         this.news = news;
       } else {
-        console.log('Status 500');
+        // console.log('Status 500');
         this.alert = {
           mensaje: 'Error en el servidor Firebase',
           descripcion: 'Error al obtener registros de la base de datos...',

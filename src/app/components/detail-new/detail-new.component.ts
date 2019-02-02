@@ -23,10 +23,10 @@ export class DetailNewComponent implements OnInit {
 
   public getDetails( idbook: string ): void {
     this._dataApiService.getOneNew( idbook ).subscribe( newDetail => {
-      console.log('noticia', newDetail);
+      // console.log('noticia', newDetail);
       this.new = newDetail;
       this.urlimage = this.new.urlImage;
-      console.log(this.urlimage);
+      // console.log(this.urlimage);
     });
   }
 

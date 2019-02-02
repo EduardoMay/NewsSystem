@@ -26,10 +26,10 @@ export class ListNewsComponent implements OnInit {
     this._authService.isAuth().subscribe( auth => {
       if (auth) {
         this.userUid = auth.uid;
-        console.log(this.userUid);
-        // this._authService.isUserAdmin( this.userUid ).subscribe( userRole => {
-        //   this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
-        // });
+        // console.log(this.userUid);
+        this._authService.isUserAdmin( this.userUid ).subscribe( userRole => {
+          this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+        });
       }
     });
   }
@@ -39,7 +39,7 @@ export class ListNewsComponent implements OnInit {
   */
   public getListNews() {
     this._dataApi.getAllNews().subscribe( news => {
-      console.log('noticias', news);
+      // console.log('noticias', news);
       this.news = news;
     });
   }

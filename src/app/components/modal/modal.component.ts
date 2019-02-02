@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit {
   }
 
   public onSaveNew(formNew: NgForm) {
-    console.log('Form', formNew.value);
+    // console.log('Form', formNew.value);
 
     if (formNew.value.id === null) {
       formNew.value.userUid = this.userUid;

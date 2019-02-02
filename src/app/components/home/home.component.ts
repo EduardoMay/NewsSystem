@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this._dataApi.getAllNews().subscribe( news => {
       if (news.length > 0) {
         this.news = news;
-        console.log('Noticias: ', news);
+        // console.log('Noticias: ', news);
       } else {
         this.alert = {
           mensaje: 'Error en el servidor Firebase',
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
           status: 500,
           active: true
         };
-        console.log(this.alert);
+        // console.log(this.alert);
       }
     });
   }

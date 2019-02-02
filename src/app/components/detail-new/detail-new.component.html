@@ -1,8 +1,9 @@
 <div class="bg_img" [ngStyle]="{'background-image' : 'url(' + urlimage + ')'}"></div>
 
-<div class="container m-5">
+<div class="container mt-5 text-justify">
+  <h1 class="h3 mb-3">{{ new.titulo }}</h1>
+  <h6>{{new.fecha}} <span class="badge badge-success">{{new.autor}}</span></h6>
   <p>
     {{ new.descripcion }}
   </p>
-  <h6>{{new.fecha}} <span class="badge badge-secondary">{{new.autor}}</span></h6>
 </div>
