@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   public onLogin(): void {
     this._authService.loginEmailUser( this.email, this.password )
       .then( res => {
-        console.log('Logeado por correo: ', res);
+        // console.log('Logeado por correo: ', res);
         this.isError = false;
         this.onLoginRedirect();
       }).catch( error => {
