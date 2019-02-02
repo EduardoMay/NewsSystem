@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewInterface } from 'src/app/models/new';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { AlertInterface } from 'src/app/models/alert';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any;
 
@@ -18,9 +19,12 @@ export class HomeComponent implements OnInit {
     active: false
   };
 
-  constructor(private _dataApi: DataApiService) { }
+  constructor(private _dataApi: DataApiService,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner();
+
     $('.carousel').carousel({
       interval: 3000,
       wrap: true
@@ -41,6 +45,19 @@ export class HomeComponent implements OnInit {
         // console.log(this.alert);
       }
     });
+  }
+
+  /**
+   * run spinner
+  */
+  public spinner(): void {
+    /** spinner starts on init */
+    this.spinnerService.show();
+
+    setTimeout(() => {
+        /** spinner ends after 1 seconds */
+        this.spinnerService.hide();
+    }, 1000);
   }
 
 }

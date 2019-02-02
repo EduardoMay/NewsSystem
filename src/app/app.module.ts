@@ -30,6 +30,9 @@ import { AlertComponent } from './components/alert/alert.component';
 // scrollreveal
 import { NgsRevealModule } from 'ng-scrollreveal';
 
+// spinner
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +57,8 @@ import { NgsRevealModule } from 'ng-scrollreveal';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    NgsRevealModule.forRoot()
+    NgsRevealModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
     AngularFireAuth,
