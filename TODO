@@ -1,6 +1,6 @@
 
 Home:
-  ☐ Agregar los botones para ir a la noticia detallada
+  ✔ Agregar los botones para ir a la noticia detallada @started(19-02-05 19:42) @done(19-02-05 19:44) @lasted(2m47s)
 Footer:
   ☐ Agregar opciones al footer
 Perfil:
@@ -9,3 +9,4 @@ Perfil:
   ☐ Para los administradores: poder ver los perfiles y cambiar el tipo de usuario
 Proyecto:
   ✔ Verificar los roles @started(19-02-05 19:01) @done(19-02-05 19:34) @lasted(33m10s)
+  ☐ subirlo a gitpages
