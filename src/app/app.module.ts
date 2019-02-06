@@ -20,7 +20,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
 
 // firebase
-import { environment } from '../environments/environment';
+// import { environment } from '../environments/environment';
+import { firebase } from '../environments/firebase';
+export const firebaseConfig = firebase.firebaseConfig;
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -57,7 +59,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     NgsRevealModule.forRoot(),
