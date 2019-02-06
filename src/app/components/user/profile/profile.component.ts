@@ -34,7 +34,10 @@ export class ProfileComponent implements OnInit {
     email: '',
     photoUrl: ''
   }; // datos de la persona logeada
+  private userUid = null;
   public providerId = 'null'; // id del perfil
+  public provider = 'null'; // proveedor del usuario
+  public tipoUser: any = null; // tipo de usuario
 
   public username = '';
   public uploadPercent: Observable<number>; // pocentaje de la subida de la imagen
@@ -45,9 +48,14 @@ export class ProfileComponent implements OnInit {
               private angStorage: AngularFireStorage) { }
 
   ngOnInit() {
-    /**
-     * Obtiene las propiedades del perfil
-    */
+    this.dataUser();
+    this.getCurrentUser();
+  }
+
+  /**
+   * Obtiene las propiedades del perfil
+  */
+  public dataUser() {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         this.user.name = userData.displayName;
@@ -55,8 +63,47 @@ export class ProfileComponent implements OnInit {
         this.user.email = userData.email;
         this.user.photoUrl = userData.photoURL;
         this.providerId = userData.providerData[0].providerId;
+        this.providerUser(this.providerId);
         // console.log('Datos del usuario: ', userData);
         // console.log('Datos del usuario: ', this.providerId);
+      }
+    });
+  }
+
+  /**
+   * saber el proveedor del usuario, en que plataforma se logeo
+  */
+  public providerUser( providerId: string ) {
+    if ( providerId === 'password') {
+      this.provider = 'Correo y contraseña';
+    } else if ( providerId === 'facebook.com') {
+      this.provider = 'Facebook';
+    } else if ( providerId === 'google.com') {
+      this.provider = 'Google';
+    }
+  }
+
+  /**
+   * se observa si el usuario esta autentificado y el rol que tiene
+  */
+  public getCurrentUser() {
+    this._authService.isAuth().subscribe( auth => {
+      if (auth) {
+        this.userUid = auth.uid;
+        // console.log(this.userUid);
+        this._authService.isUserAdmin( this.userUid ).subscribe( userRole => {
+          this.tipoUser = Object.assign({}, userRole.roles);
+          if ( this.tipoUser.miembro ) {
+            // console.log('miembro');
+            this.tipoUser = 'Miembro';
+          } else if ( this.tipoUser.editor ) {
+            // console.log('editor');
+            this.tipoUser = 'Editor';
+          } else if ( this.tipoUser.admin ) {
+            // console.log('Administrador');
+            this.tipoUser = 'Administrador';
+          }
+        });
       }
     });
   }

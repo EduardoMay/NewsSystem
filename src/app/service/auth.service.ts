@@ -94,7 +94,7 @@ export class AuthService {
       id: user.uid,
       email: user.email,
       roles: {
-        usuario: true
+        miembro: true
       }
     };
 

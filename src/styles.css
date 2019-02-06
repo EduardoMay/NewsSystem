@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 /* You can add global styles to this file, and also import other style files */
+*{
+  font-family: 'Titillium Web', sans-serif;
+}
+
 .form-control.login-user {
   border: 0 solid #fff !important;
 }

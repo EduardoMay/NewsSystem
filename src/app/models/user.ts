@@ -1,5 +1,5 @@
 export interface Roles {
-  usuario?: boolean;
+  miembro?: boolean;
   admin?: boolean;
   editor?: boolean;
 }
