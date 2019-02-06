@@ -17,10 +17,10 @@
                   [(ngModel)]="password" required minlength="5">
                 </div>
                 <div class="form-group">
-                  <a routerLink="/user/login" class="form-control login-user">Ya tienes una cuenta?</a>
+                  <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
+                  <a routerLink="/user/login" class="form-control login-user text-decoration-none">Ya tienes una cuenta?</a>
                 </div>
                 <div class="form-group">
                   <button (click)="onLoginFacebook()" class="btn btn-block btn-social btn-facebook">

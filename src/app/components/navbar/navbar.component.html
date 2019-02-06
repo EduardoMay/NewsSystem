@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="inicio">NewsSystem</a>
+  
+  <a class="navbar-brand" routerLink="inicio">
+    <img src="../../../assets/img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    NewsSystem
+  </a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -16,14 +21,14 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="statusLogin">
         <a class="nav-link" routerLink="user/perfil">Perfil</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mr-2">
         <a class="btn btn-primary" routerLink="user/login" *ngIf="!statusLogin">Login</a>
       </li>
       <li class="nav-item">
         <a class="btn btn-primary" routerLink="user/registro" *ngIf="!statusLogin">Registrate</a>
       </li>
       <li class="nav-item" *ngIf="statusLogin">
-        <a class="btn btn-primary" (click)="onLogout()" href="#">Signup</a>
+        <a class="btn btn-primary text-decoration-none text-white" (click)="onLogout()">Signup</a>
       </li>
     </ul>
   </div>

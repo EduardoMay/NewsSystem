@@ -2,3 +2,9 @@
   background-color: #3b5998;
   color: #ffffff;
 }
+
+.footer{
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}

@@ -42,7 +42,7 @@
   <div class="card mb-3 mt-3" *ngFor="let new of news" ngsReveal>
     <img [src]="new.urlImage" class="card-img-top" style="height: 250px;" [alt]="new.titulo">
     <div class="card-body">
-      <h5 class="card-title">{{new.titulo}}</h5>
+      <a routerLink="/new/{{new.id}}"><h5 class="card-title">{{new.titulo}}</h5></a>
       <p class="card-text">{{new.descripcion | slice:0:250}}...</p>
       <p class="card-text"><small class="text-muted">{{ new.fecha }}</small><span class="badge badge-primary ml-2">{{ new.autor }}</span></p>
     </div>
