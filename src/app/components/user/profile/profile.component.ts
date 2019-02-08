@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     email: '',
     photoUrl: ''
   }; // datos de la persona logeada
-  private userUid = null;
+  public userUid = null;
   public providerId = 'null'; // id del perfil
   public provider = 'null'; // proveedor del usuario
   public tipoUser: any = null; // tipo de usuario
@@ -150,6 +150,7 @@ export class ProfileComponent implements OnInit {
           this.alertAct = true;
           // Actualizar foto de perfil
           this.user.name = userData.displayName;
+          this._authService.updateUserName(this.userUid, this.user.name);
           // Esconder el cuadro para subir foto
           this.divUpdatePhoto = false;
           setTimeout(() => {

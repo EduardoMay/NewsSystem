@@ -93,9 +93,22 @@ export class AuthService {
     const data: UserInterface = {
       id: user.uid,
       email: user.email,
+      name: user.displayName,
       roles: {
         miembro: true
       }
+    };
+
+    return userRef.set(data, {merge: true});
+  }
+
+  /**
+   * actualiza el nombre del usuario
+  */
+  public updateUserName( userUid: string, name: string ) {
+    const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
+    const data: UserInterface = {
+      name: name,
     };
 
     return userRef.set(data, {merge: true});
