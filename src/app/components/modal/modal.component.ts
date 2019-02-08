@@ -48,4 +48,8 @@ export class ModalComponent implements OnInit {
     this.btnClose.nativeElement.click(); // cierra el modal
   }
 
+  public resetForm(formNew) {
+    formNew.resetForm();
+  }
+
 }
