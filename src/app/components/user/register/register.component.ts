@@ -44,11 +44,34 @@ export class RegisterComponent implements OnInit {
   /**
    * login con facebook
    */
-  public onLoginFacebook() {}
+  public onLoginFacebook() {
+    this._authService.registerFacebook()
+      .then( res => {
+        console.log('Usuario logeado con facebook');
+        this.onLoginRedirect();
+      }).catch( err => {
+        console.log('Error al iniciar sesion facebook', err.message);
+      });
+  }
 
   /**
    * login con google
    */
-  public onLoginGoogle() {}
+  public onLoginGoogle() {
+    this._authService.loginGoogle()
+      .then( res => {
+        console.log('Usuario logeado con google');
+        this.onLoginRedirect();
+      }).catch( err => {
+        console.log('Error al iniciar sesion con google');
+      });
+  }
+
+  /**
+   * redireccionar al iniciao
+  */
+  public onLoginRedirect() {
+   this.router.navigate(['inicio']);
+}
 
 }

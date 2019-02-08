@@ -55,6 +55,13 @@ export class AuthService {
    * login con facebook
   */
   public loginFacebook() {
+    return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() );
+  }
+
+  /**
+   * registro con facebook
+  */
+  public registerFacebook() {
     return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() )
       .then( credential => {
         this.updateUserData(credential.user);
@@ -65,6 +72,13 @@ export class AuthService {
    * login con google
   */
   public loginGoogle() {
+    return this._afService.auth.signInWithPopup( new auth.GoogleAuthProvider() );
+  }
+
+  /**
+   * login con google
+  */
+  public registerGoogle() {
     return this._afService.auth.signInWithPopup( new auth.GoogleAuthProvider() )
       .then( credential => {
         this.updateUserData(credential.user);
