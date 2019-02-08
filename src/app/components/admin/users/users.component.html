@@ -13,11 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>1</th>
-        <td>Eduardo</td>
-        <td>Correo</td>
-        <td>Usuario</td>
+      <tr *ngFor="let user of users; index as i">
+        <th>{{ i+1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{user.email}}</td>
+        <td *ngIf="user.roles['admin']">Administrador</td>
+        <td *ngIf="user.roles['editor']">Editor</td>
+        <td *ngIf="user.roles['miembro']">Miembro</td>
         <td>
           <button type="button" class="btn btn-primary"
             data-toggle="modal" data-target="#usuarios">Cambiar permisos</button>
