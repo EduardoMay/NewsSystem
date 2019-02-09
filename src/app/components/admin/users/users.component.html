@@ -1,0 +1,61 @@
+<!-- table usuarios -->
+<div class="container mt-5 mb-5">
+  <h3>Usuarios</h3>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <th>{{ i+1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td *ngIf="user.roles['admin']">Administrador</td>
+        <td *ngIf="user.roles['editor']">Editor</td>
+        <td *ngIf="user.roles['miembro']">Miembro</td>
+        <td>
+          <button type="button" class="btn btn-primary"
+            data-toggle="modal" data-target="#usuarios"
+            (click)="getDataUser(user.id, user.name)">Cambiar permisos</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- /table usuarios -->
+
+<!-- modal -->
+<div class="modal fade" id="usuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Usuario <small>{{nameUser}}</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #formUser (ngSubmit)="updateUser()">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Role</label>
+            <select name="role" [(ngModel)]="role" class="form-control">
+              <option value="miembro">Miembro</option>
+              <option value="editor">Editor</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /modal -->
