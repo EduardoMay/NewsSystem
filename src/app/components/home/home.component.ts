@@ -17,6 +17,9 @@ import { NewInterface } from 'src/app/models/new';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { AlertInterface } from 'src/app/models/alert';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LikeInterface } from 'src/app/models/like';
+import { AuthService } from 'src/app/service/auth.service';
+import { LikeService } from 'src/app/service/like.service';
 
 declare var $: any; // para usar el jquery
 
@@ -32,9 +35,13 @@ export class HomeComponent implements OnInit {
   public alert: AlertInterface = {
     active: false
   }; // si existe algun mensage de error
+  public userId = '';
+  public activeUser = false;
 
   constructor(private _dataApi: DataApiService,
-    private spinnerService: NgxSpinnerService) { }
+    private spinnerService: NgxSpinnerService,
+    private _likeService: LikeService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.spinner(); // inicia el spinner
@@ -45,6 +52,20 @@ export class HomeComponent implements OnInit {
     }); // uso del corousel de bootstrap 4.2
 
     this.getAllNews();
+
+    this.getCurrentUser();
+  }
+
+  /**
+   * usuario actual
+  */
+  public getCurrentUser() {
+    this.authService.isAuth().subscribe( data => {
+      if (data) {
+        this.activeUser = true;
+        this.userId = data.uid;
+      }
+    });
   }
 
   /**
@@ -84,9 +105,15 @@ export class HomeComponent implements OnInit {
   /**
    * like new
   */
-  public likeNew(liketipe: string) {
+  public likeNew(liketipe, newId) {
     if (liketipe === 'like') {
-      console.log('like');
+      const likeNew: LikeInterface = {
+        userId: this.userId,
+        newId: newId,
+        like: true
+      };
+      // console.log(likeNew);
+      this._likeService.addLike(likeNew);
     } else if (liketipe === 'dislike') {
       console.log('dislike');
     }
