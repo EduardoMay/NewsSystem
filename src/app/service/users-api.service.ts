@@ -50,4 +50,12 @@ export class UsersApiService {
         });
       }));
   }
+
+  /**
+   * actualizar el role del usaurio
+  */
+  public updateRoleUser(userUid: string, data: UserInterface) {
+    const userRef = this.angularFirestore.doc<UserInterface>(`users/${userUid}`);
+    userRef.update(data);
+  }
 }

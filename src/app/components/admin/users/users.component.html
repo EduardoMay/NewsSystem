@@ -16,13 +16,14 @@
       <tr *ngFor="let user of users; index as i">
         <th>{{ i+1 }}</th>
         <td>{{ user.name }}</td>
-        <td>{{user.email}}</td>
+        <td>{{ user.email }}</td>
         <td *ngIf="user.roles['admin']">Administrador</td>
         <td *ngIf="user.roles['editor']">Editor</td>
         <td *ngIf="user.roles['miembro']">Miembro</td>
         <td>
           <button type="button" class="btn btn-primary"
-            data-toggle="modal" data-target="#usuarios">Cambiar permisos</button>
+            data-toggle="modal" data-target="#usuarios"
+            (click)="getDataUser(user.id, user.name)">Cambiar permisos</button>
         </td>
       </tr>
     </tbody>
@@ -35,26 +36,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Usuarios</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Usuario <small>{{nameUser}}</small></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #formUser (ngSubmit)="updateUser()">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Role</label>
+            <select name="role" [(ngModel)]="role" class="form-control">
+              <option value="miembro">Miembro</option>
+              <option value="editor">Editor</option>
+              <option value="admin">Administrador</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>
