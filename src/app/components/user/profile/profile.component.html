@@ -23,10 +23,12 @@
       <button class="btn btn-success text-center" 
         *ngIf="!divUpdatePhoto"  
         (click)="btnUpdatePhoto()">Actualizar perfil</button>
-      <a routerLink="/listado" class="btn btn-primary ml-1"
+      <a routerLink="/admin/listado" class="btn btn-primary ml-1"
         *ngIf="tipoUser === 'Editor' || tipoUser === 'Administrador'">
         Listado de noticias
       </a>
+      <a routerLink="/admin/users" class="btn btn-warning ml-1 text-white"
+        *ngIf="tipoUser === 'Administrador'">Usuarios</a>
     </div>
   </div>
 

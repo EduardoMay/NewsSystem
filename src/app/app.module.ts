@@ -37,6 +37,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UsersComponent } from './components/admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NewsComponent,
     FooterComponent,
     AlertComponent,
-    ModalComponent
+    ModalComponent,
+    UsersComponent
   ],
   imports: [
     AppRoutingModule,
