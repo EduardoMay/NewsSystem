@@ -81,4 +81,15 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * like new
+  */
+  public likeNew(liketipe: string) {
+    if (liketipe === 'like') {
+      console.log('like');
+    } else if (liketipe === 'dislike') {
+      console.log('dislike');
+    }
+  }
+
 }
