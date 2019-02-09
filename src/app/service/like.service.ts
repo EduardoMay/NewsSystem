@@ -6,24 +6,24 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Like } from '../models/like';
+import { LikeInterface } from '../models/like';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LikeService {
 
-  private likesCollection: AngularFirestoreCollection<Like>;
-  public likes: Observable<Like[]>;
-  private likesDoc: AngularFirestoreDocument<Like>;
-  public like: Observable<Like>;
+  private likesCollection: AngularFirestoreCollection<LikeInterface>;
+  public likes: Observable<LikeInterface[]>;
+  private likesDoc: AngularFirestoreDocument<LikeInterface>;
+  public like: Observable<LikeInterface>;
 
   constructor(private angularFirestore: AngularFirestore) {
-    this.likesCollection = this.angularFirestore.collection<Like>('likes');
+    this.likesCollection = this.angularFirestore.collection<LikeInterface>('likes');
     this.likes = this.likesCollection.valueChanges();
   }
 
-  public addLike(likeNew: Like): void {
+  public addLike(likeNew: LikeInterface): void {
     this.likesCollection.add(likeNew);
   }
 }
