@@ -7,4 +7,7 @@ export interface NewInterface {
   autor?: string;
   fecha?: string;
   urlImage?: string;
+  urlFuente?: string;
+  like?: boolean;
+  idLike?: string;
 }
