@@ -4,15 +4,11 @@ Proyecto generado por [Angular CLI](https://github.com/angular/angular-cli) vers
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ejecutar `ng serve` para un servidor de desarrollo. Vaya a `http://localhost:4200/`. La aplicación se volverá a cargar automáticamente si cambia alguno de los archivos de origen.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Ejecutar `ng generate component component-name` para generar nuevo componente. Tambien puedes usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Descripcion
 
@@ -24,29 +20,39 @@ Sistema de noticias en la cual se estara presentando una pagina web donde se mue
 ```
 componentes
   components/
+    admin/
+      list-news/
+      users/
+    alert/
+    detail-view/
+    footer/
+    home/
+    modal/
     navbar/
+    news/
     user/
       profile/
       register/
       login/
-    detail-new/
-    home/
     page404/
-    admin/
-      list-news/
-
-providers
-  auth/
-  data-news
-
-modals
+providers/
+  auth
+  data-api
+  like
+  users-api
+modals/
+  alert/
+  like/
   news/
   user/
-
-pipes
-
-guards
+guards/
+  auth/
+  
 ```
 
 ## Base de datos NoSQL
-En este proyecto utlizare Firebase para guardar todas las noticas
+En este
+ proyecto utlizare Firebase para guardar todas las noticas
+
+## Git pages
+Este proyecto esta subido al servidor de github, utilizando git pages.
