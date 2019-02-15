@@ -12,42 +12,18 @@
   <!-- ALERTA -->
   <app-alert *ngIf="alert.active" [alert]="alert"></app-alert>
   <!-- /ALERTA -->
-  <!-- carousel -->
-  <div id="carouselExampleIndicators" class="carousel slide mt-3" data-ride="carousel" ngsReveal>
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let new of news; let primero = first;" [ngClass]="{'active': primero}">
-        <img [src]="new.urlImage" style="height: 500px;" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>{{ new.titulo }}</h5>
-          <p>{{ new.descripcion | slice:0:150 }}...</p>
-        </div>  
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  <!-- /carousel -->
   <hr>
   <div class="card mb-3 mt-3" *ngFor="let new of news" ngsReveal>
+    <div class="card-body">
+      <a routerLink="/new/{{new.id}}" class=" text-decoration-none"><h3 class="card-title">{{new.titulo}}</h3></a>
+      <span class="badge badge-primary mr-2">{{ new.autor }}</span>
+      <small class="text-muted">{{ new.fecha | date }}</small>
+    </div>
     <img [src]="new.urlImage" class="card-img-top" style="height: 250px;" [alt]="new.titulo">
     <div class="card-body">
-      <a routerLink="/new/{{new.id}}"><h5 class="card-title">{{new.titulo}}</h5></a>
       <p class="card-text">{{new.descripcion | slice:0:250}}...</p>
       <p class="card-text">
-        <a href="" class="text-decoration-none mr-2">Fuente</a>
-        <small class="text-muted">{{ new.fecha }}</small>
-        <span class="badge badge-primary ml-2">{{ new.autor }}</span>
+        <a [href]="new.urlFuente" class="text-decoration-none mr-2">Fuente</a>
         <svg (click)="likeNew('like', new.id)"  *ngIf="activeUser && !new.like"
           aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-heart fa-w-16 fa-3x heart ml-1"><path fill="currentColor" d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"></path></svg>
         <svg (click)="likeNew('dislike', new.idLike)" *ngIf="activeUser && new.like"

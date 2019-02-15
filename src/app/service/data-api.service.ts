@@ -36,7 +36,7 @@ export class DataApiService {
 
   constructor(private angularFirestore: AngularFirestore) {
     // guarda todas las colecciones obtenidad de la base de datos
-    this.newsCollection = this.angularFirestore.collection<NewInterface>('news');
+    this.newsCollection = this.angularFirestore.collection<NewInterface>('news', ref => ref.orderBy('fecha', 'desc'));
     this.news = this.newsCollection.valueChanges();
   }
 

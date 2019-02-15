@@ -39,6 +39,7 @@ export class ModalComponent implements OnInit {
 
     if (formNew.value.id === null) {
       formNew.value.userUid = this.userUid;
+      formNew.value.fecha = new Date().getTime();
       this._dataApi.addNew(formNew.value); // guarda
     } else {
       this._dataApi.updateNew(formNew.value); // actualiza
