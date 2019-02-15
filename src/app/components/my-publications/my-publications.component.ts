@@ -64,8 +64,12 @@ export class MyPublicationsComponent implements OnInit {
 
         if (this.newsUser.length === 0) {
           this.errorMes = 'No tienes ninguna publicacion';
+        } else {
+          this.errorMes = '';
         }
         console.log(this.newsUser);
+      } else {
+        this.errorMes = 'No tienes ninguna publicacion';
       }
     });
   }
