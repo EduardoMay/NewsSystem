@@ -18,6 +18,8 @@ import { NewsComponent } from './components/news/news.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { MyPublicationsComponent } from './components/my-publications/my-publications.component';
 
 // firebase
 import { environment } from '../environments/environment';
@@ -35,7 +37,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
-import { UsersComponent } from './components/admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UsersComponent } from './components/admin/users/users.component';
     FooterComponent,
     AlertComponent,
     ModalComponent,
-    UsersComponent
+    UsersComponent,
+    MyPublicationsComponent
   ],
   imports: [
     AppRoutingModule,
