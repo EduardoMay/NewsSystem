@@ -74,4 +74,21 @@ export class MyPublicationsComponent implements OnInit {
     });
   }
 
+  /**
+   * actualizar noticias
+  */
+  public onPreUpdateNew( newData: NewInterface) {
+    this._dataApi.selectedNew = Object.assign({}, newData);
+  }
+
+  /**
+   * eliminar noticia
+  */
+  public onDeleteNew( idNew: string ): void {
+    const confirmation = confirm('Deseas eliminarlo?');
+    if (confirmation) {
+      this._dataApi.deleteNew( idNew );
+    }
+  }
+
 }

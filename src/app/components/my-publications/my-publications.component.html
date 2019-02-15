@@ -12,8 +12,10 @@
     <div class="card-body">
       <!-- <h5 class="card-title"></h5> -->
       <p class="card-text">{{new.descripcion}}</p>
-      <button type="button" class="btn btn-primary mr-1">Editar</button>
-      <button type="button" class="btn btn-danger">Eliminar</button>
+      <button class="btn btn-warning mr-1" style="color: #ffffff;"
+        data-toggle="modal" data-target="#modalNew"
+        (click)="onPreUpdateNew(new)">Editar</button>
+      <button class="btn btn-danger" (click)="onDeleteNew(new.id)">Eliminar</button>
     </div>
   </div>
 </div>
