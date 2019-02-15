@@ -25,7 +25,7 @@
           {{ new.autor }}
         </td>
         <td>
-          {{ new.fecha }}
+          {{ new.fecha | date }}
         </td>
         <td *ngIf="new.userUid === userUid || isAdmin == true; else noAdminUpdate">
           <button class="btn btn-warning mr-1" style="color: #ffffff;"
