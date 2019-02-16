@@ -1,0 +1,23 @@
+<div class="container mt-5 mb-5">
+  <h1>Mis publicaciones</h1>
+  <hr>
+  <button class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#modalNew">Nueva publicacion</button>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMes !== ''">
+    {{errorMes}}
+  </div>
+  <div class="card mt-3 mb-3 shadow rounded" *ngFor="let new of newsUser">
+    <h5 class="card-header">{{new.titulo}}</h5>
+    <div class="card-body">
+      <!-- <h5 class="card-title"></h5> -->
+      <p class="card-text">{{new.descripcion}}</p>
+      <button class="btn btn-warning mr-1" style="color: #ffffff;"
+        data-toggle="modal" data-target="#modalNew"
+        (click)="onPreUpdateNew(new)">Editar</button>
+      <button class="btn btn-danger" (click)="onDeleteNew(new.id)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<app-modal [userUid]="userUid"></app-modal>

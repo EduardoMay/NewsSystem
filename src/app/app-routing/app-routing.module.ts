@@ -23,12 +23,14 @@ import { ListNewsComponent } from '../components/admin/list-news/list-news.compo
 import { DetailNewComponent } from '../components/detail-new/detail-new.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { UsersComponent } from '../components/admin/users/users.component';
+import { MyPublicationsComponent } from '../components/my-publications/my-publications.component';
 
 const ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: 'inicio', component: HomeComponent },
   { path: 'noticias', component: NewsComponent },
   { path: 'admin/listado', component: ListNewsComponent, canActivate: [AuthGuard] },
+  { path: 'misPublicaciones', component: MyPublicationsComponent, canActivate: [AuthGuard] },
   { path: 'new/:id', component: DetailNewComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/registro', component: RegisterComponent },

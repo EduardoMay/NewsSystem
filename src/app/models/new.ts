@@ -2,12 +2,12 @@ export interface NewInterface {
   id?: string;
   userUid?: string;
   titulo?: string;
-  descripcionCorto?: string;
   descripcion?: string;
   autor?: string;
-  fecha?: string;
+  fecha?: number;
   urlImage?: string;
   urlFuente?: string;
-  like?: boolean;
   idLike?: string;
+  like?: boolean;
+  contador?: number;
 }

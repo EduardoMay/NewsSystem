@@ -14,6 +14,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-modal',
@@ -25,10 +26,24 @@ export class ModalComponent implements OnInit {
 
   @Input() userUid: string; // se obtiene el id del usuario
   @ViewChild('btnClose') btnClose: ElementRef;
+  public nameUser = '';
 
-  constructor(public _dataApi: DataApiService) { }
+  constructor(public _dataApi: DataApiService,
+    private _authService: AuthService) { }
 
   ngOnInit() {
+    this.getCurrentUser();
+  }
+
+  /**
+   * obtener el nombre de usuario
+  */
+  public getCurrentUser() {
+    this._authService.isAuth().subscribe( data => {
+      if (data) {
+        this.nameUser = data.displayName;
+      }
+    });
   }
 
   /**
@@ -39,6 +54,7 @@ export class ModalComponent implements OnInit {
 
     if (formNew.value.id === null) {
       formNew.value.userUid = this.userUid;
+      formNew.value.fecha = new Date().getTime();
       this._dataApi.addNew(formNew.value); // guarda
     } else {
       this._dataApi.updateNew(formNew.value); // actualiza
