@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
   */
   public getAllNews() {
     this._dataApi.getAllNews().subscribe( news => {
+      this.spinnerService.hide();
       if (news.length > 0) {
         this.checkLikeAndDislike(news);
       } else {
@@ -101,11 +102,6 @@ export class HomeComponent implements OnInit {
   public spinner(): void {
     /** spinner starts on init */
     this.spinnerService.show();
-
-    setTimeout(() => {
-        /** spinner ends after 1 seconds */
-        this.spinnerService.hide();
-    }, 1000);
   }
 
   /**

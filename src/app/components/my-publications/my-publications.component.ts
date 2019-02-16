@@ -16,6 +16,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { NewInterface } from 'src/app/models/new';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-my-publications',
@@ -29,12 +30,23 @@ export class MyPublicationsComponent implements OnInit {
   public errorMes = '';
 
   constructor(private _dataApi: DataApiService,
-    private _authService: AuthService) { }
+    private _authService: AuthService,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner();
+
     this.getCurrentUser();
 
     this.getAllNewsUser();
+  }
+
+  /**
+   * run spinner
+  */
+  public spinner(): void {
+    /** spinner starts on init */
+    this.spinnerService.show();
   }
 
   /**
@@ -54,6 +66,7 @@ export class MyPublicationsComponent implements OnInit {
   public getAllNewsUser() {
     let cont = 0;
     this._dataApi.getAllNews().subscribe( news => {
+      this.spinnerService.hide();
       if (news.length > 0) {
         for (const i in news) {
           if (news[i].userUid === this.userUid) {
