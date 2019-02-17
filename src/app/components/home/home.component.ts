@@ -136,6 +136,7 @@ export class HomeComponent implements OnInit {
    * checar si el usuario dio like o no
   */
   public checkLikeAndDislike(news) {
+    let cont = 0;
     if (news.length > 0) {
       this.news = news;
       for (const data of news) {
@@ -144,7 +145,12 @@ export class HomeComponent implements OnInit {
             data.like = like.like;
             data.idLike = like.id;
           }
+          if (data.id === like.newId) {
+            cont++;
+            data.contador = cont;
+          }
         }
+        cont = 0;
       }
     }
 
