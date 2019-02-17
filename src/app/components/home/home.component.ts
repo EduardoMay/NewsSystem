@@ -151,10 +151,10 @@ export class HomeComponent implements OnInit {
           }
           if (data.id === like.newId) {
             cont++;
-          } else {
-            // cont--;
+            data.contador = cont;
           }
         }
+        cont = 0;
       }
     }
 
