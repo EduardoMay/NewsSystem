@@ -7,11 +7,14 @@
     {{ new.descripcion }}
   </p>
 
-  <div class="row">
+  <!-- Form Comment -->
+  <div class="row" *ngIf="userAuth">
     <div class="col-md-12">
-      <form>
+      <form class="form"
+        #formComent="ngForm" (submit)="sendComent(formComent)">
         <div class="group-form">
-          <textarea name="comentario" class="form-control" id="comentario"></textarea>
+          <textarea name="comentario" class="form-control" id="comentario"
+            [(ngModel)]="MessageComent"></textarea>
         </div>
         <div class="form-group mt-3">
           <button type="submit" class="btn btn-primary">Comentar</button>
@@ -19,17 +22,28 @@
       </form>
     </div>
   </div>
+  <!-- /Form Comment -->
+
+  <div class="container">
+    <h3>Comentarios</h3>
+  </div>
+
+  <!-- Comment from all users -->
   <div class="row mb-5">
     <div class="col-md-12">
-      <div class="card mb-2 shadow">
+      <div class="card mb-2 shadow" *ngFor="let comment of commentsNew">
         <div class="card-body">
           <div class="d-inline-flex">
-            <img src="../../../assets/img/logo.svg" alt="..." style="width: 2rem; height: 2rem;">
-            <h5 class="card-title pt-1 pl-2">Eduardo May</h5>
+            <img [src]="comment.photoUser" [alt]="comment.nameUser" class="rounded-circle img-thumbnail" style="width: 2rem; height: 2rem;">
+            <h5 class="card-title pt-1 pl-2">
+              {{ comment.nameUser }}
+            </h5>
           </div>  
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <p class="card-text">
+            {{ comment.messageComent }}
+          </p>
+          <!-- <a href="#" class="card-link">Eliminar</a>
+          <a href="#" class="card-link">Editar</a> TODO-->
         </div>
       </div>
     </div>
