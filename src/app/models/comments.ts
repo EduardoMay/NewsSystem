@@ -4,4 +4,5 @@ export interface CommentsInterface {
   photoUser?: string;
   idNew?: string;
   messageComent?: string;
+  fecha?: number;
 }
