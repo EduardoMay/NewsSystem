@@ -23,6 +23,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public name = ''; // nombre
   public email = ''; // correo a registra
   public password = ''; // contraseña
 
@@ -35,8 +36,14 @@ export class RegisterComponent implements OnInit {
    * registro de usuario
    */
   public onRegister() {
-    this._authService.registerUser(this.email, this.password)
+    this._authService.registerUser(this.email, this.password, this.name)
       .then( res => {
+        this._authService.isAuth().subscribe( userData => {
+          if ( userData ) {
+            userData.updateProfile( {displayName: this.name, photoURL: null} ).then( () => {
+            });
+          }
+        });
         this.router.navigate(['inicio']);
       }).catch( err => console.log('Error al registrarte:', err.message));
   }
