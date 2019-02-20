@@ -33,7 +33,7 @@ export class CommentsApiService {
   public comment: Observable<CommentsInterface>;
 
   constructor(private angularFirestore: AngularFirestore) {
-    this.commentsCollection = this.angularFirestore.collection<CommentsInterface>('comments');
+    this.commentsCollection = this.angularFirestore.collection<CommentsInterface>('comments', ref => ref.orderBy('fecha', 'desc'));
     this.comments = this.commentsCollection.valueChanges();
   }
 

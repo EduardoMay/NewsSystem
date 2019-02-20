@@ -91,6 +91,7 @@ export class DetailNewComponent implements OnInit {
   public getAllComents() {
     this._commentService.getAllComments().subscribe( dataComments => {
       if (dataComments) {
+        this.commentsNew = [];
         for (let i = 0; i < dataComments.length; i++) {
           if (dataComments[i].idNew === this.commentUser.idNew) {
             this.commentsNew.push(dataComments[i]);
@@ -108,9 +109,11 @@ export class DetailNewComponent implements OnInit {
     this.commentUser.nameUser = this.userData.name;
     this.commentUser.photoUser = this.userData.photoUrl;
     this.commentUser.messageComent = commentForm.value.comentario;
+    this.commentUser.fecha = new Date().getTime();
     // console.log('Comentario: ', this.commentUser);
     // console.log('form: ', commentForm);
     this._commentService.addComment(this.commentUser);
+    commentForm.resetForm();
   }
 
 }

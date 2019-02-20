@@ -24,20 +24,26 @@
   </div>
   <!-- /Form Comment -->
 
-  <div class="container">
+  <div class="container" *ngIf="commentsNew.length >= 1; else dontComments">
     <h3>Comentarios</h3>
   </div>
+  <ng-template #dontComments>
+    <div class="container">
+      <h3>Sin comentarios</h3>
+    </div>
+  </ng-template>
 
   <!-- Comment from all users -->
-  <div class="row mb-5">
+  <div class="row mb-5" *ngIf="commentsNew.length >= 1">
     <div class="col-md-12">
       <div class="card mb-2 shadow" *ngFor="let comment of commentsNew">
         <div class="card-body">
           <div class="d-inline-flex">
             <img [src]="comment.photoUser" [alt]="comment.nameUser" class="rounded-circle img-thumbnail" style="width: 2rem; height: 2rem;">
-            <h5 class="card-title pt-1 pl-2">
+            <h4 class="card-title pt-1 pl-2">
               {{ comment.nameUser }}
-            </h5>
+            </h4>
+            <small class="p-1"> {{ comment.fecha | date }} </small>
           </div>  
           <p class="card-text">
             {{ comment.messageComent }}
