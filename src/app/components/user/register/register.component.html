@@ -9,6 +9,10 @@
               <form #formRegister="ngForm" (ngSubmit)="onRegister()">
                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 <div class="form-group">
+                  <input type="text" name="name" class="form-control" placeholder="Nombre" 
+                    [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
                   <input type="email" name="email" class="form-control" placeholder="Correo" 
                     [(ngModel)]="email" required minlength="8">
                 </div>

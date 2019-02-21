@@ -31,12 +31,12 @@ export class AuthService {
   /**
    * registrar directamente a la base de datos
   */
-  public registerUser(email: string, password: string) {
+  public registerUser(email: string, password: string, name: string) {
     return new Promise( (resolve, reject) => {
       this._afService.auth.createUserWithEmailAndPassword(email, password)
         .then( userData => {
           resolve(userData);
-          this.updateUserData(userData.user);
+          this.updateUserData(userData.user, name);
         }).catch( err => reject(err));
     });
   }
@@ -64,7 +64,7 @@ export class AuthService {
   public registerFacebook() {
     return this._afService.auth.signInWithPopup( new auth.FacebookAuthProvider() )
       .then( credential => {
-        this.updateUserData(credential.user);
+        this.updateUserData(credential.user, null);
       });
   }
 
@@ -81,7 +81,7 @@ export class AuthService {
   public registerGoogle() {
     return this._afService.auth.signInWithPopup( new auth.GoogleAuthProvider() )
       .then( credential => {
-        this.updateUserData(credential.user);
+        this.updateUserData(credential.user, null);
       });
   }
 
@@ -102,18 +102,31 @@ export class AuthService {
   /**
    * actualiza la informacion del usuario
   */
-  public updateUserData( user ) {
+  public updateUserData( user, newName: string ) {
     const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${user.uid}`);
-    const data: UserInterface = {
-      id: user.uid,
-      email: user.email,
-      name: user.displayName,
-      roles: {
-        miembro: true
-      }
-    };
+    if (newName === null) {
+      const data: UserInterface = {
+        id: user.uid,
+        email: user.email,
+        name: user.displayName,
+        roles: {
+          miembro: true
+        }
+      };
 
-    return userRef.set(data, {merge: true});
+      return userRef.set(data, {merge: true});
+    } else {
+      const data: UserInterface = {
+        id: user.uid,
+        email: user.email,
+        name: newName,
+        roles: {
+          miembro: true
+        }
+      };
+
+      return userRef.set(data, {merge: true});
+    }
   }
 
   /**

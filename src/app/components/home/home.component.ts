@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit {
       this.spinnerService.hide();
       if (news.length > 0) {
         this.checkLikeAndDislike(news);
+        this.alert.active = false;
       } else {
         this.alert = {
           mensaje: 'Error en el servidor Firebase',
@@ -154,6 +155,6 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    console.log('Noticias: ', this.news);
+    // console.log('Noticias: ', this.news);
   }
 }

@@ -80,7 +80,7 @@ export class MyPublicationsComponent implements OnInit {
         } else {
           this.errorMes = '';
         }
-        console.log(this.newsUser);
+        // console.log(this.newsUser);
       } else {
         this.errorMes = 'No tienes ninguna publicacion';
       }
