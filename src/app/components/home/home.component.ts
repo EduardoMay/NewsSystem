@@ -155,6 +155,6 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    console.log('Noticias: ', this.news);
+    // console.log('Noticias: ', this.news);
   }
 }

@@ -25,18 +25,18 @@ export class UsersComponent implements OnInit {
   public getListUsers() {
     this._usersApiService.getAllUsers().subscribe( users => {
       this.users = users;
-      console.log(users);
+      // console.log(users);
     });
   }
 
   public getDataUser(id: string, name: string){
     this.userUid = id;
     this.nameUser = name;
-    console.log(this.userUid);
+    // console.log(this.userUid);
   }
 
   public updateUser() {
-    console.log(this.role);
+    // console.log(this.role);
     if (this.role === 'miembro') {
       const data: UserInterface = {
         roles: {
