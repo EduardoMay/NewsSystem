@@ -16,23 +16,40 @@
       <!-- <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="noticias">Noticias</a>
       </li> --> 
-      <li class="nav-item" routerLinkActive="active" *ngIf="statusLogin">
+      <li class="nav-item" routerLinkActive="active" *ngIf="currentUser.status">
         <a class="nav-link" routerLink="misPublicaciones">Mis publicaciones</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-md-auto">
-      <li class="nav-item" routerLinkActive="active" *ngIf="statusLogin">
-        <a class="nav-link" routerLink="user/perfil">Perfil</a>
-      </li>
       <li class="nav-item mr-2">
-        <a class="btn btn-primary" routerLink="user/login" *ngIf="!statusLogin">Login</a>
+        <a class="btn btn-primary" routerLink="user/login" *ngIf="!currentUser.status">Login</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-primary" routerLink="user/registro" *ngIf="!statusLogin">Registrate</a>
-      </li>
-      <li class="nav-item" *ngIf="statusLogin">
-        <a class="btn btn-primary text-decoration-none text-white" (click)="onLogout()">Logout</a>
+        <a class="btn btn-primary" routerLink="user/registro" *ngIf="!currentUser.status">Registrate</a>
       </li>
     </ul>
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto" *ngIf="currentUser.status">
+
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-100 small">{{currentUser.name}}</span>
+          <img class="img-profile rounded-circle" style="width: 35px; height: 35px;" [src]="currentUser.photo">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated fadeIn" aria-labelledby="userDropdown">
+          <a class="nav-link dropdown-item" routerLink="user/perfil">
+            <i class="fa fa-user-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+            Perfil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link dropdown-item cursor-pointer" (click)="onLogout()">
+            <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
+        </div>
+      </li>
+
+    </ul>
   </div>
-</nav>
