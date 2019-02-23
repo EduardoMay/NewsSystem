@@ -9,30 +9,49 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="inicio">Inicio</a>
+        <a class="nav-link" routerLink="inicio">
+          <i class="fa fa-home fa-sm fa-fw mr-1 text-gray-400"></i>
+          Inicio
+        </a>
       </li>
-      <!-- <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="noticias">Noticias</a>
-      </li> --> 
-      <li class="nav-item" routerLinkActive="active" *ngIf="statusLogin">
-        <a class="nav-link" routerLink="misPublicaciones">Mis publicaciones</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-md-auto">
-      <li class="nav-item" routerLinkActive="active" *ngIf="statusLogin">
-        <a class="nav-link" routerLink="user/perfil">Perfil</a>
+      <li class="nav-item" routerLinkActive="active" *ngIf="currentUser.status">
+        <a class="nav-link" routerLink="misPublicaciones">
+          <i class="fa fa-list fa-sm fa-fw mr-1 text-gray-400"></i>
+          Mis publicaciones
+        </a>
       </li>
       <li class="nav-item mr-2">
-        <a class="btn btn-primary" routerLink="user/login" *ngIf="!statusLogin">Login</a>
+        <a class="nav-link dropdown-item" routerLink="user/login" *ngIf="!currentUser.status">
+          <i class="fa fa-sign-in fa-sm fa-fw mr-1 text-gray-400"></i>
+          Login
+        </a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-primary" routerLink="user/registro" *ngIf="!statusLogin">Registrate</a>
+        <a class="nav-link dropdown-item" routerLink="user/registro" *ngIf="!currentUser.status">
+          <i class="fa fa-clipboard fa-sm fa-fw mr-1 text-gray-400"></i>
+          Registrate
+        </a>
       </li>
-      <li class="nav-item" *ngIf="statusLogin">
-        <a class="btn btn-primary text-decoration-none text-white" (click)="onLogout()">Logout</a>
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow" *ngIf="currentUser.status">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-1 d-none d-lg-inline">{{currentUser.name}}</span>
+          <img class="img-profile rounded-circle" style="width: 25px; height: 25px;" [src]="currentUser.photo">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated fadeIn" aria-labelledby="userDropdown">
+          <a class="nav-link dropdown-item pl-3" routerLink="user/perfil">
+            <i class="fa fa-user-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+            Perfil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link dropdown-item cursor-pointer pl-3" (click)="onLogout()">
+            <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
+        </div>
       </li>
     </ul>
   </div>
-</nav>

@@ -21,6 +21,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LikeInterface } from 'src/app/models/like';
 import { AuthService } from 'src/app/service/auth.service';
 import { LikeService } from 'src/app/service/like.service';
+import { NgsRevealConfig } from 'ng-scrollreveal';
 
 declare var $: any; // para usar el jquery
 
@@ -43,7 +44,8 @@ export class HomeComponent implements OnInit {
   constructor(private _dataApi: DataApiService,
     private spinnerService: NgxSpinnerService,
     private _likeService: LikeService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    public config: NgsRevealConfig) { }
 
   ngOnInit() {
     this.spinner(); // inicia el spinner
@@ -52,6 +54,8 @@ export class HomeComponent implements OnInit {
       interval: 3000,
       wrap: true
     }); // uso del corousel de bootstrap 4.2
+
+    this.config.duration = 300;
 
     /**
      * Debe estar acomodado de la siguiente forma para poder obtener bien los datos

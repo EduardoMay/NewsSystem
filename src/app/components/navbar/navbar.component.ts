@@ -25,6 +25,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   public statusLogin = false; // estatus del usuario
+  public currentUser = {
+    name: '',
+    photo: '',
+    status: false
+  };
 
   constructor(private afAuth: AngularFireAuth,
     private _authService: AuthService,
@@ -42,6 +47,9 @@ export class NavbarComponent implements OnInit {
       if (auth) {
         console.log('Usuario logeado');
         this.statusLogin = true;
+        this.currentUser.name = auth.displayName;
+        this.currentUser.photo = auth.photoURL;
+        this.currentUser.status = true;
       } else {
         console.log('Usuario no logeado');
         this.statusLogin = false;
@@ -54,9 +62,9 @@ export class NavbarComponent implements OnInit {
   */
   public onLogout() {
     this._authService.logoutUser();
-    this.router.navigate(['/inicio']);
-    this.statusLogin = false;
-    window.location.reload();
+    this.currentUser.status = false;
+    this.router.navigate(['/']);
+    // window.location.reload();
   }
 
 }
