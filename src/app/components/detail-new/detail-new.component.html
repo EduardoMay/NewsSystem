@@ -36,7 +36,7 @@
   <!-- Comment from all users -->
   <div class="row mb-5" *ngIf="commentsNew.length >= 1">
     <div class="col-md-12">
-      <div class="card mb-2 shadow" *ngFor="let comment of commentsNew">
+      <div class="card mb-2 shadow" *ngFor="let comment of commentsNew" ngsReveal>
         <div class="card-body">
           <div class="d-inline-flex">
             <img [src]="comment.photoUser" [alt]="comment.nameUser" class="rounded-circle img-thumbnail" style="width: 2rem; height: 2rem;">
