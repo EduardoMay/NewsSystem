@@ -5,6 +5,7 @@ export interface NewInterface {
   descripcion?: string;
   autor?: string;
   fecha?: number;
+  idImg?: string;
   urlImage?: string;
   urlFuente?: string;
   idLike?: string;

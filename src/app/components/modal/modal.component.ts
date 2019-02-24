@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit {
   public urlImageNew: Observable<string>; // url de la imagen donde se guarda en la base de datos
   public statusUpdateNew = false;
   @ViewChild('imageUser') inputImageUser: ElementRef;
+  public idImg = '';
 
   constructor(public _dataApi: DataApiService,
     private _authService: AuthService,
@@ -65,9 +66,10 @@ export class ModalComponent implements OnInit {
       formNew.value.urlImage = this.inputImageUser.nativeElement.value;
       formNew.value.userUid = this.userUid;
       formNew.value.fecha = new Date().getTime();
+      formNew.value.idImg = this.idImg;
       this._dataApi.addNew(formNew.value); // guarda
     } else {
-      this._dataApi.updateNew(formNew.value); // actualiza
+      this._dataApi.updateNew(formNew.value); // actualizar
     }
 
     formNew.resetForm(); // limpia el formulario
@@ -81,7 +83,9 @@ export class ModalComponent implements OnInit {
   public saveImgNew (img) {
     const id = Math.random().toString(10).substring(2);
     const file = img.target.files[0];
-    const filePath = `imgNews/new_${id}`;
+    const nameImg = `new_${id}`;
+    this.idImg = nameImg;
+    const filePath = `imgNews/${nameImg}`;
     const ref = this.angStorage.ref(filePath);
     const task = this.angStorage.upload(filePath, file);
 
