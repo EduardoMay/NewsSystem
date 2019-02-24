@@ -67,22 +67,25 @@ export class MyPublicationsComponent implements OnInit {
     let cont = 0;
     this._dataApi.getAllNews().subscribe( news => {
       this.spinnerService.hide();
-      if (news.length > 0) {
-        for (const i in news) {
-          if (news[i].userUid === this.userUid) {
-            this.newsUser[cont] = news[i];
-            cont++;
+      if (news) {
+        this.newsUser = [];
+        if (news.length > 0) {
+          for (let i = 0; i < news.length; i++) {
+            if (news[i].userUid === this.userUid) {
+              this.newsUser.push(news[i]);
+              cont++;
+            }
           }
-        }
 
-        if (this.newsUser.length === 0) {
-          this.errorMes = 'No tienes ninguna publicacion';
+          if (this.newsUser.length === 0) {
+            this.errorMes = 'No tienes ninguna publicacion';
+          } else {
+            this.errorMes = '';
+          }
+          // console.log(this.newsUser);
         } else {
-          this.errorMes = '';
+          this.errorMes = 'No tienes ninguna publicacion';
         }
-        // console.log(this.newsUser);
-      } else {
-        this.errorMes = 'No tienes ninguna publicacion';
       }
     });
   }
