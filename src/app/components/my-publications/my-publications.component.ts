@@ -17,6 +17,7 @@ import { DataApiService } from 'src/app/service/data-api.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { NewInterface } from 'src/app/models/new';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-my-publications',
@@ -28,10 +29,12 @@ export class MyPublicationsComponent implements OnInit {
   public userUid = '';
   public newsUser: NewInterface[] = [];
   public errorMes = '';
+  public newDelete: NewInterface;
 
   constructor(private _dataApi: DataApiService,
     private _authService: AuthService,
-    private spinnerService: NgxSpinnerService) { }
+    private spinnerService: NgxSpinnerService,
+    private angStorage: AngularFireStorage) { }
 
   ngOnInit() {
     this.spinner();
@@ -100,10 +103,12 @@ export class MyPublicationsComponent implements OnInit {
   /**
    * eliminar noticia
   */
-  public onDeleteNew( idNew: string ): void {
+  public onDeleteNew( idNew: string, idImg: string ): void {
     const confirmation = confirm('Deseas eliminarlo?');
     if (confirmation) {
       this._dataApi.deleteNew( idNew );
+      const filePath = `imgNews/${idImg}`;
+      this.angStorage.ref(filePath).delete();
     }
   }
 
