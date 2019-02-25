@@ -2,7 +2,7 @@
 
 <div class="container mt-5 text-justify">
   <h1 class="h3 mb-3">{{ new.titulo }}</h1>
-  <h6>{{ new.fecha | date }} <span class="badge badge-success">{{new.autor}}</span></h6>
+  <h6><i class="fa fa-calendar mr-1"></i>{{ new.fecha | date }} <span class="badge badge-success"><i class="fa fa-user mr-1"></i>{{new.autor}}</span></h6>
   <p>
     {{ new.descripcion }}
   </p>
@@ -30,6 +30,7 @@
   <ng-template #dontComments>
     <div class="container">
       <h3>Sin comentarios</h3>
+      <hr>
     </div>
   </ng-template>
 
@@ -43,7 +44,7 @@
             <h4 class="card-title pt-1 pl-2">
               {{ comment.nameUser }}
             </h4>
-            <small class="p-1"> {{ comment.fecha | date }} </small>
+            <small class="p-1"> <i class="fa fa-calendar mr-1"></i> {{ comment.fecha | date }} </small>
           </div>  
           <p class="card-text">
             {{ comment.messageComent }}

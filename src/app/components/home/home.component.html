@@ -16,8 +16,8 @@
   <div class="card mb-3 mt-3 shadow" *ngFor="let new of news" ngsReveal>
     <div class="card-body">
       <a routerLink="/new/{{new.id}}" class=" text-decoration-none"><h3 class="card-title">{{new.titulo}}</h3></a>
-      <span class="badge badge-primary mr-2">{{ new.autor }}</span>
-      <small class="text-muted">{{ new.fecha | date }}</small>
+      <span class="badge badge-primary mr-2"><i class="fa fa-user mr-1"></i>{{ new.autor }}</span>
+      <small class="text-muted"><i class="fa fa-calendar mr-1"></i>{{ new.fecha | date }}</small>
     </div>
     <img [src]="new.urlImage" class="card-img-top" style="height: 250px;" [alt]="new.titulo">
     <div class="card-body">
