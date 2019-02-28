@@ -25,6 +25,7 @@ import { AuthGuard } from '../guard/auth.guard';
 import { UsersComponent } from '../components/admin/users/users.component';
 import { MyPublicationsComponent } from '../components/my-publications/my-publications.component';
 import { NoticeOfPrivacyComponent } from '../components/notice-of-privacy/notice-of-privacy.component';
+import { ContactComponent } from '../components/contact/contact.component';
 
 const ROUTES: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,7 @@ const ROUTES: Routes = [
   { path: 'user/perfil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'aviso-privacidad', component: NoticeOfPrivacyComponent},
+  { path: 'contacto', component: ContactComponent},
   { path: '**', component: Page404Component }
 ];
 
