@@ -39,6 +39,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NoticeOfPrivacyComponent } from './components/notice-of-privacy/notice-of-privacy.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AlertComponent,
     ModalComponent,
     UsersComponent,
-    MyPublicationsComponent
+    MyPublicationsComponent,
+    NoticeOfPrivacyComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,

@@ -83,6 +83,14 @@
   opacity: 0.8;
 }
 
+.color-primary-background {
+  background-color: #00293C;
+}
+
+.color-secondary-background {
+  background-color: #1E656D;
+}
+
 /* @media only screen and (max-width: 767px) {
   .notfound .notfound-404 {
     height: 110px;
