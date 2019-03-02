@@ -1,3 +1,47 @@
-<p>
-  profile-edit works!
-</p>
+<div class="container mt-3">
+  <h1>Editar perfil</h1>
+  <hr>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card mt-3" ngsReveal>
+        <div class="card-body">
+          <form class="form"
+            #formProfile="ngForm" (submit)="uploadUsernameUser()">
+            <div class="form-group">
+              <label for="usuario" class="">Usuario</label>
+              <input type="text" class="form-control" placeholder="Usuario"
+                id="usuario" name="username" [(ngModel)]="username">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Guardar</button>
+          </form>
+  
+          <form (ngSubmit)="uploadImagenUser()">
+            <h4 class="h4 font-weight-normal">
+              Subir imagen
+            </h4>
+            <div class="form-group">
+              <input type="file" class="form-control" accept=".png, .jpg"
+                (change)="onUpload($event)">
+            </div>
+            <div class="progress mb-3">
+              <div [style.width]="(uploadPercent | async) + '%'"
+                class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{ uploadPercent | async}}%
+              </div>
+            </div>
+            <input type="hidden" #imageUser [value]="urlImage | async">
+            <button *ngIf="urlImage | async; else btnDisable"
+              type="submit" class="btn btn-lg btn-primary btn-block">Guardar</button>
+            <button type="button" class="btn btn-danger btn-lg btn-block"
+              (click)="goBack()">
+              Atras
+            </button>
+            <ng-template #btnDisable>
+                <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">Guardar</button>
+            </ng-template>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
