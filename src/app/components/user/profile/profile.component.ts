@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
   public provider = 'null'; // proveedor del usuario
   public tipoUser: any = null; // tipo de usuario
 
-  public userAuth: UserInterface = {};
+  public userAuth: UserInterface = {}; // data del usuario sacado de la BD de firebase
   public uploadPercent: Observable<number>; // pocentaje de la subida de la imagen
   public urlImage: Observable<string>; // url de la imagen donde se guarda en la base de datos
   @ViewChild('imageUser') inputImageUser: ElementRef;
@@ -117,83 +117,4 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
-
-  /**
-   * guardar el url de la imagen en los datos del perfil
-  */
-  public uploadImagenUser() {
-    this._authService.isAuth().subscribe( userData => {
-      if ( userData ) {
-        userData.updateProfile({
-          displayName: this.userAuth,
-          photoURL: this.inputImageUser.nativeElement.value
-        }).then( () => {
-          console.log('Usuario actualizado');
-          // Alerta
-          this.alertMessage = 'Has actualizado tus datos';
-          this.alertAct = true;
-          // Esconder el cuadro para subir foto
-          this.divUpdatePhoto = false;
-          setTimeout(() => {
-            this.alertAct = false;
-          }, 3000);
-        }).catch( () => {
-          console.log('Error al actualizar perfil');
-        });
-      }
-    });
-  }
-
-  /**
-   * guardar el url de la imagen en los datos del perfil
-  */
-  public uploadUsernameUser() {
-    this._authService.isAuth().subscribe( userData => {
-      if ( userData ) {
-        userData.updateProfile({
-          displayName: this.userAuth,
-          photoURL: this.user.photoUrl
-        }).then( () => {
-          console.log('Usuario actualizado');
-          // Alerta
-          this.alertMessage = 'Has actualizado tus datos';
-          this.alertAct = true;
-          // Actualizar foto de perfil
-          this.user.name = userData.displayName;
-          this._authService.updateUserName(this.userUid, this.user.name);
-          // Esconder el cuadro para subir foto
-          this.divUpdatePhoto = false;
-          setTimeout(() => {
-            this.alertAct = false;
-          }, 3000);
-        }).catch( () => {
-          console.log('Error al actualizar perfil');
-        });
-      }
-    });
-  }
-
-  /**
-   * guarda la imagen en firestore
-  */
-  public onUpload(e) {
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `uploads/profile_${id}`;
-    const ref = this.angStorage.ref(filePath);
-    const task = this.angStorage.upload(filePath, file);
-
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe( finalize( () => {
-      this.urlImage = ref.getDownloadURL();
-    })).subscribe();
-  }
-
-  /**
-   * muestra la parte donde se actualiza la foto
-  */
-  public btnUpdatePhoto() {
-    this.divUpdatePhoto = true;
-  }
-
 }

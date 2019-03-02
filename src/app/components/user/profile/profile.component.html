@@ -26,9 +26,7 @@
         </button>
         <div class="dropdown-menu animated fadeIn faster" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item cursor-pointer" type="button"
-            routerLink="edit/{{userUid}}"
-            *ngIf="!divUpdatePhoto"  
-            (click)="btnUpdatePhoto()">
+            routerLink="edit/{{userUid}}">
             Editar Perfil
           </button>
           <button class="dropdown-item cursor-pointer" type="button"
@@ -48,7 +46,7 @@
     </div>
   </div>
 
-  <div class="row mb-5">
+  <!-- <div class="row mb-5">
     <div class="col-md-12">
       <div class="card mt-3" *ngIf="divUpdatePhoto" ngsReveal>
         <div class="card-body">
@@ -86,5 +84,5 @@
         </div>
         </div>
     </div>
-  </div>
+  </div> -->
 </div>
