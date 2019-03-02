@@ -26,6 +26,7 @@
         </button>
         <div class="dropdown-menu animated fadeIn faster" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item cursor-pointer" type="button"
+            routerLink="edit/{{userUid}}"
             *ngIf="!divUpdatePhoto"  
             (click)="btnUpdatePhoto()">
             Editar Perfil
