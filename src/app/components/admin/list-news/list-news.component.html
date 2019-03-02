@@ -1,6 +1,15 @@
 <div class="container">
   <h1 class="h1">Listado de noticias</h1>
   <hr>
+  <!-- spinner -->
+  <ngx-spinner
+    bdColor="rgba(255, 255, 255, 1)"
+    size="medium"
+    color="#000000"
+    type="ball-scale-multiple">
+   <p style="font-size: 20px; color: black">Loading...</p>
+  </ngx-spinner>
+  <!-- /spinner -->
   <button class="btn btn-primary mb-2"
     data-toggle="modal"
     data-target="#modalNew">Agregar</button>
@@ -16,7 +25,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let new of news | paginate: { itemsPerPage: 10, currentPage: pageActual }; index as i">
+      <tr class="animated fadeIn" 
+        *ngFor="let new of news | paginate: { itemsPerPage: 10, currentPage: pageActual }; index as i">
         <th scope="row">{{ i + 1 }}</th>
         <td>
           {{ new.titulo }}

@@ -20,6 +20,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/service/data-api.service';
 import { NewInterface } from 'src/app/models/new';
 import { AuthService } from 'src/app/service/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list-news',
@@ -34,11 +35,14 @@ export class ListNewsComponent implements OnInit {
   public pageActual = 1; // ngx-pagination - pagina donde se inicia
 
   constructor(private _dataApi: DataApiService,
-    private _authService: AuthService) { }
+    private _authService: AuthService,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.getCurrentUser();
     this.getListNews();
+
+    this.spinnerService.show();
   }
 
   /**
@@ -62,6 +66,7 @@ export class ListNewsComponent implements OnInit {
   public getListNews() {
     this._dataApi.getAllNews().subscribe( news => {
       // console.log('noticias', news);
+      this.spinnerService.hide();
       this.news = news;
     });
   }

@@ -16,6 +16,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UsersApiService } from 'src/app/service/users-api.service';
 import { UserInterface } from 'src/app/models/user';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-users',
@@ -31,9 +32,11 @@ export class UsersComponent implements OnInit {
   public userUid = ''; // almacena el id del usuario seleccionado
   public nameUser = ''; // almacena el nombre del usuario del usuario seleccionado
 
-  constructor(private _usersApiService: UsersApiService) { }
+  constructor(private _usersApiService: UsersApiService,
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.show();
     this.getListUsers(); // obtiene todos los usuarios
   }
 
@@ -42,6 +45,7 @@ export class UsersComponent implements OnInit {
   */
   public getListUsers() {
     this._usersApiService.getAllUsers().subscribe( users => {
+      this.spinnerService.hide();
       this.users = users;
       // console.log(users);
     });
