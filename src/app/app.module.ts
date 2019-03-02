@@ -41,6 +41,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NoticeOfPrivacyComponent } from './components/notice-of-privacy/notice-of-privacy.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ProfileEditComponent } from './components/user/profile/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ContactComponent } from './components/contact/contact.component';
     UsersComponent,
     MyPublicationsComponent,
     NoticeOfPrivacyComponent,
-    ContactComponent
+    ContactComponent,
+    ProfileEditComponent
   ],
   imports: [
     AppRoutingModule,
