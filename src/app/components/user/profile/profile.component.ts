@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
   public provider = 'null'; // proveedor del usuario
   public tipoUser: any = null; // tipo de usuario
 
-  public username = '';
+  public userAuth: UserInterface = {};
   public uploadPercent: Observable<number>; // pocentaje de la subida de la imagen
   public urlImage: Observable<string>; // url de la imagen donde se guarda en la base de datos
   @ViewChild('imageUser') inputImageUser: ElementRef;
@@ -58,8 +58,9 @@ export class ProfileComponent implements OnInit {
   public dataUser() {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
+        this.getCurrentDataUser(userData.uid);
         this.user.name = userData.displayName;
-        this.username = userData.displayName;
+        // this.username = userData.displayName;
         this.user.email = userData.email;
         this.user.photoUrl = userData.photoURL;
         this.providerId = userData.providerData[0].providerId;
@@ -67,6 +68,15 @@ export class ProfileComponent implements OnInit {
         // console.log('Datos del usuario: ', userData);
         // console.log('Datos del usuario: ', this.providerId);
       }
+    });
+  }
+
+  /**
+   * obtener la infomacion del usuario
+  */
+  public getCurrentDataUser(id: string) {
+    this._authService.getCurrentUser(id).subscribe( userData => {
+      this.userAuth = userData;
     });
   }
 
@@ -115,7 +125,7 @@ export class ProfileComponent implements OnInit {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         userData.updateProfile({
-          displayName: this.username,
+          displayName: this.userAuth,
           photoURL: this.inputImageUser.nativeElement.value
         }).then( () => {
           console.log('Usuario actualizado');
@@ -141,7 +151,7 @@ export class ProfileComponent implements OnInit {
     this._authService.isAuth().subscribe( userData => {
       if ( userData ) {
         userData.updateProfile({
-          displayName: this.username,
+          displayName: this.userAuth,
           photoURL: this.user.photoUrl
         }).then( () => {
           console.log('Usuario actualizado');
