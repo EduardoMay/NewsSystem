@@ -20,6 +20,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { MyPublicationsComponent } from './components/my-publications/my-publications.component';
+import { NoticeOfPrivacyComponent } from './components/notice-of-privacy/notice-of-privacy.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ProfileEditComponent } from './components/user/profile/profile-edit/profile-edit.component';
 
 // firebase
 // import { environment } from '../environments/environment';
@@ -39,9 +42,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NoticeOfPrivacyComponent } from './components/notice-of-privacy/notice-of-privacy.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { ProfileEditComponent } from './components/user/profile/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
