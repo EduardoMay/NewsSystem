@@ -51,9 +51,10 @@ export class RegisterComponent implements OnInit {
   /**
    * login con facebook
    */
-  public onLoginFacebook() {
+  public onRegisterFacebook() {
     this._authService.registerFacebook()
       .then( res => {
+        // usar lo mismo que en la linea 41
         console.log('Usuario logeado con facebook');
         this.onLoginRedirect();
       }).catch( err => {
@@ -64,8 +65,8 @@ export class RegisterComponent implements OnInit {
   /**
    * login con google
    */
-  public onLoginGoogle() {
-    this._authService.loginGoogle()
+  public onRegisterGoogle() {
+    this._authService.registerGoogle()
       .then( res => {
         console.log('Usuario logeado con google');
         this.onLoginRedirect();
