@@ -68,7 +68,7 @@ export class DataApiService {
        return data;
      }
    }));
- }
+  }
 
   /**
    * guardar una noticias nueva a firebase

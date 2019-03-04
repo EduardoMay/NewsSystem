@@ -64,10 +64,10 @@ export class NavbarComponent implements OnInit {
    * obtener la infomacion del usuario
   */
   public getCurrentDataUser(id: string) {
-  this._authService.getCurrentUser(id).subscribe( userData => {
-    this.dataUser = userData;
-  });
-}
+    this._authService.getCurrentUser(id).subscribe( userData => {
+      this.dataUser = userData;
+    });
+  }
 
   /**
    * cerrar sesion

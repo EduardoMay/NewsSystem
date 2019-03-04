@@ -1,3 +1,17 @@
+/**
+ * @fileoverview  ProfileEditComponent, se implemento este componente para poder editar los datos del
+ * usuario
+ *
+ * @version 1.0
+ *
+ * @author Eduardo May<eduardo_may@outlook.com>
+ *
+ * History
+ * v1.0 Se implemento metodos para poder editar la informacion del usuario
+ *
+ * La primara version de  ProfileEditComponent fue escrita por Eduardo May
+*/
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
