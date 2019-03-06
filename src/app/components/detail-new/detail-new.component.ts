@@ -106,6 +106,7 @@ export class DetailNewComponent implements OnInit {
    * enviar comentarios
   */
   public sendComent(commentForm: NgForm) {
+    this.commentUser.idUser = this.userData.id;
     this.commentUser.nameUser = this.userData.name;
     this.commentUser.photoUser = this.userData.photoUrl;
     this.commentUser.messageComent = commentForm.value.comentario;

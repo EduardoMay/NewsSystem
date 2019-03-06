@@ -74,7 +74,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   /**
-   * guardar el url de la imagen en los datos del perfil
+   * actualizar el nombre de perfil
   */
   public uploadUsernameUser() {
     this._authService.isAuth().subscribe( userData => {
