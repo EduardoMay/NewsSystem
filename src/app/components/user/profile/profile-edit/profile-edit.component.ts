@@ -104,7 +104,9 @@ export class ProfileEditComponent implements OnInit {
           displayName: this.username,
           photoURL: this.inputImageUser.nativeElement.value
         }).then( () => {
+          this._authService.updateProfileUrl(userData.uid, userData.photoURL);
           console.log('Usuario actualizado');
+          this.router.navigate(['/user/perfil']);
         }).catch( () => {
           console.log('Error al actualizar perfil');
         });
