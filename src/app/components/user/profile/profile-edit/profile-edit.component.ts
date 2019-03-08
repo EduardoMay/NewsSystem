@@ -39,6 +39,8 @@ export class ProfileEditComponent implements OnInit {
   public urlImage: Observable<string>; // url de la imagen donde se guarda en la base de datos
   @ViewChild('imageUser') inputImageUser: ElementRef;
 
+  private idPhoto: string;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private _authService: AuthService,
@@ -104,7 +106,9 @@ export class ProfileEditComponent implements OnInit {
           displayName: this.username,
           photoURL: this.inputImageUser.nativeElement.value
         }).then( () => {
+          this._authService.updateProfileUrl(userData.uid, userData.photoURL, this.idPhoto);
           console.log('Usuario actualizado');
+          this.router.navigate(['/user/perfil']);
         }).catch( () => {
           console.log('Error al actualizar perfil');
         });
@@ -118,7 +122,8 @@ export class ProfileEditComponent implements OnInit {
   public onUpload(e) {
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `uploads/profile_${id}`;
+    this.idPhoto = `profile_${id}`;
+    const filePath = `uploads/${this.idPhoto}`;
     const ref = this.angStorage.ref(filePath);
     const task = this.angStorage.upload(filePath, file);
 

@@ -167,6 +167,29 @@ export class AuthService {
   }
 
   /**
+   * guardar url en el database
+  */
+  public updateProfileUrl(userUid: string, photoUrl: any, idPhoto: string) {
+    if ( idPhoto === null ) {
+      const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
+      const data: UserInterface = {
+        photoUrl: photoUrl
+      };
+
+      return userRef.set(data, {merge: true});
+    } else {
+      const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
+      const data: UserInterface = {
+        photoUrl: photoUrl,
+        idPhoto: idPhoto
+      };
+
+      return userRef.set(data, {merge: true});
+    }
+  }
+
+
+  /**
    * obtiene el registro de un usuario
   */
   public isUserAdmin( userUid: string ) {

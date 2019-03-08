@@ -56,6 +56,11 @@ export class RegisterComponent implements OnInit {
       .then( res => {
         // usar lo mismo que en la linea 41
         console.log('Usuario logeado con facebook');
+        this._authService.isAuth().subscribe( userData => {
+          if ( userData ) {
+            this._authService.updateProfileUrl(userData.uid, userData.photoURL, null);
+          }
+        });
         this.onLoginRedirect();
       }).catch( err => {
         console.log('Error al iniciar sesion facebook', err.message);
@@ -69,6 +74,11 @@ export class RegisterComponent implements OnInit {
     this._authService.registerGoogle()
       .then( res => {
         console.log('Usuario logeado con google');
+        this._authService.isAuth().subscribe( userData => {
+          if ( userData ) {
+            this._authService.updateProfileUrl(userData.uid, userData.photoURL, null);
+          }
+        });
         this.onLoginRedirect();
       }).catch( err => {
         console.log('Error al iniciar sesion con google');
@@ -80,6 +90,6 @@ export class RegisterComponent implements OnInit {
   */
   public onLoginRedirect() {
    this.router.navigate(['inicio']);
-}
+  }
 
 }
