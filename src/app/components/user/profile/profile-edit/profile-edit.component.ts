@@ -41,6 +41,9 @@ export class ProfileEditComponent implements OnInit {
 
   private idPhoto: string;
 
+  public viewEditName = false;
+  public viewEditPhoto = false;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private _authService: AuthService,

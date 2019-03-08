@@ -2,8 +2,16 @@
   <h1>Editar perfil</h1>
   <hr>
   <div class="row mb-5">
-    <div class="col-md-12">
-      <div class="card mt-3" ngsReveal>
+    <div class="col-md-2">
+      <h4>Opciones</h4>
+      <hr>
+      <a class="cursor-pointer" (click)="viewEditName = !viewEditName; viewEditPhoto = false">Cambiar nombre</a>
+      <hr>
+      <a class="cursor-pointer" (click)="viewEditPhoto = !viewEditPhoto; viewEditName = false">Cambiar foto</a>
+      <hr>
+    </div>
+    <div class="col-md-10">
+      <div class="card mt-3" *ngIf="viewEditName" ngsReveal>
         <div class="card-body">
           <form class="form"
             #formProfile="ngForm" (submit)="uploadUsernameUser()">
@@ -14,7 +22,10 @@
             </div>
             <button type="submit" class="btn btn-primary mb-2">Guardar</button>
           </form>
-  
+        </div>
+      </div>
+      <div class="card mt-3" *ngIf="viewEditPhoto" ngsReveal>
+        <div class="card-body">
           <form (ngSubmit)="uploadImagenUser()">
             <h4 class="h4 font-weight-normal">
               Subir imagen
