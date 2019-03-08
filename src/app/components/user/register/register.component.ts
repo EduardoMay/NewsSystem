@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
         console.log('Usuario logeado con facebook');
         this._authService.isAuth().subscribe( userData => {
           if ( userData ) {
-            this._authService.updateProfileUrl(userData.uid, userData.photoURL);
+            this._authService.updateProfileUrl(userData.uid, userData.photoURL, null);
           }
         });
         this.onLoginRedirect();
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
         console.log('Usuario logeado con google');
         this._authService.isAuth().subscribe( userData => {
           if ( userData ) {
-            this._authService.updateProfileUrl(userData.uid, userData.photoURL);
+            this._authService.updateProfileUrl(userData.uid, userData.photoURL, null);
           }
         });
         this.onLoginRedirect();

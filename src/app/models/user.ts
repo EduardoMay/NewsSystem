@@ -9,6 +9,7 @@ export interface UserInterface {
   name?: string;
   email?: string;
   password?: string;
+  idPhoto?: string;
   photoUrl?: string;
   roles?: Roles;
 }

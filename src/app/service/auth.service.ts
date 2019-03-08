@@ -169,13 +169,23 @@ export class AuthService {
   /**
    * guardar url en el database
   */
-  public updateProfileUrl(userUid: string, photoUrl: string) {
-    const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
-    const data: UserInterface = {
-      photoUrl: photoUrl
-    };
+  public updateProfileUrl(userUid: string, photoUrl: any, idPhoto: string) {
+    if ( idPhoto === null ) {
+      const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
+      const data: UserInterface = {
+        photoUrl: photoUrl
+      };
 
-    return userRef.set(data, {merge: true});
+      return userRef.set(data, {merge: true});
+    } else {
+      const userRef: AngularFirestoreDocument<any> = this.aFirestore.doc(`users/${userUid}`);
+      const data: UserInterface = {
+        photoUrl: photoUrl,
+        idPhoto: idPhoto
+      };
+
+      return userRef.set(data, {merge: true});
+    }
   }
 
 
