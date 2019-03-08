@@ -16,7 +16,6 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserInterface } from 'src/app/models/user';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -62,7 +61,9 @@ export class ProfileComponent implements OnInit {
         this.user.name = userData.displayName;
         // this.username = userData.displayName;
         this.user.email = userData.email;
-        this.user.photoUrl = userData.photoURL;
+        this._authService.getCurrentUser(userData.uid).subscribe( data => {
+          this.user.photoUrl = data.photoUrl;
+        });
         this.providerId = userData.providerData[0].providerId;
         this.providerUser(this.providerId);
         // console.log('Datos del usuario: ', userData);
