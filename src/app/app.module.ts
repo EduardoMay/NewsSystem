@@ -42,6 +42,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CommentsPublicComponent } from './components/user/comments-public/comments-public.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MyPublicationsComponent,
     NoticeOfPrivacyComponent,
     ContactComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    CommentsPublicComponent
   ],
   imports: [
     AppRoutingModule,
