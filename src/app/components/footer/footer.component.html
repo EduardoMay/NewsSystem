@@ -1,78 +1,113 @@
 <!-- Footer -->
 <footer class="page-footer font-small color-secondary-background text-white pt-4">
 
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left">
-
-    <!-- Grid row -->
+  <div class="container">
     <div class="row">
+      <div class="col-md-8">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+      
+          <!-- Grid row -->
+          <div class="row">
+      
+            <!-- Grid column -->
+            <div class="col-md-8 mx-auto">
+      
+              <!-- Content -->
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Informacion</h5>
+              <p>Podras subir noticias de todo tipo de tema, podras dar like a las publicaciones favoritas, podras comentar
+                y conocer los comentarios de los demas, registrate y obten esos beneficios, es GRATIS!.
+              </p>
+      
+            </div>
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none">
+      
+            <!-- Grid column -->
+            <div class="col-md-4 mx-auto">
+      
+              <!-- Links -->
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Informacion</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a class="text-white text-decoration-none" routerLink="/aviso-privacidad" onclick="window.scrollTo(0,0)">Aviso de privacidad.</a>
+                </li>
+                <li>
+                  <a class="text-white text-decoration-none" routerLink="/contacto" onclick="window.scrollTo(0,0)">Contacto</a>
+                </li>
+                <!-- <li>
+                  <a href="#!">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!">Link 4</a>
+                </li> -->
+              </ul>
+      
+            </div>
+            <!-- Grid column -->
+      
+          </div>
+          <!-- Grid row -->
+      
+        </div>
+        <!-- Footer Links -->
+      
+        <hr>
+      
+        
+      </div>
 
-      <!-- Grid column -->
-      <div class="col-md-4 mx-auto">
-
-        <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Informacion</h5>
-        <p>Podras subir noticias de todo tipo de tema, podras dar like a las publicaciones favoritas, podras comentar
-          y conocer los comentarios de los demas, registrate y obten esos beneficios, es GRATIS!.
-        </p>
+      <div class="col-md-4" *ngIf="statusAuth">
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Envia un comentario sobre la pagina</h5>
+        <form #formCommentPage="ngForm" (ngSubmit)="addCommentPage(formCommentPage)" >
+          <div class="form-group">
+            <label>Comentario</label>
+            <textarea class="form-control" rows="2" id="commentPage" [(ngModel)]="commentPage" name="commentPage"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+          </div>
+        </form>
 
       </div>
-      <!-- Grid column -->
+      <div class="col-md-4" *ngIf="!statusAuth">
+      <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Inicia sesion</h5>
+        <a class="nav-link text-white" routerLink="user/login">
+          <i class="fa fa-sign-in fa-sm fa-fw mr-1 text-gray-400"></i>
+          Login
+        </a>
+        <a class="nav-link text-white" routerLink="user/registro">
+          <i class="fa fa-clipboard fa-sm fa-fw mr-1 text-gray-400"></i>
+          Registrate
+        </a>
+      </div>
 
-      <hr class="clearfix w-100 d-md-none">
-
-      <!-- Grid column -->
-      <div class="col-md-8 mx-auto">
-
-        <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Informacion</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a class="text-white text-decoration-none" routerLink="/aviso-privacidad" onclick="window.scrollTo(0,0)">Aviso de privacidad.</a>
+      <div class="col-md-12">
+        <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center">
+          <li class="list-inline-item">
+            <a class="btn-floating btn-fb mx-1 text-white" href="https://www.facebook.com/eduardo.may.2018">
+              <i class="fa fa-facebook-f"> </i>
+            </a>
           </li>
-          <li>
-            <a class="text-white text-decoration-none" routerLink="/contacto" onclick="window.scrollTo(0,0)">Contacto</a>
+          <li class="list-inline-item">
+            <a class="btn-floating btn-tw mx-1 text-white" href="https://twitter.com/Eduardo20400">
+              <i class="fa fa-twitter"> </i>
+            </a>
           </li>
-          <!-- <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li> -->
         </ul>
+        <!-- Social buttons -->
 
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+          <a href="https://eduardomay.github.io/NewsSystem/#/" class="text-white text-decoration-none"> NewSystem</a>
+        </div>
+        <!-- Copyright -->
       </div>
-      <!-- Grid column -->
-
     </div>
-    <!-- Grid row -->
-
   </div>
-  <!-- Footer Links -->
-
-  <hr>
-
-  <!-- Social buttons -->
-  <ul class="list-unstyled list-inline text-center">
-    <li class="list-inline-item">
-      <a class="btn-floating btn-fb mx-1 text-white" href="https://www.facebook.com/eduardo.may.2018">
-        <i class="fa fa-facebook-f"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-tw mx-1 text-white" href="https://twitter.com/Eduardo20400">
-        <i class="fa fa-twitter"> </i>
-      </a>
-    </li>
-  </ul>
-  <!-- Social buttons -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://eduardomay.github.io/NewsSystem/#/" class="text-white text-decoration-none"> NewSystem</a>
-  </div>
-  <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
