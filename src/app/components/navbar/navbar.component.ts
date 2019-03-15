@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit {
   public onLogout() {
     this._authService.logoutUser();
     this.currentUser.status = false;
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
     // window.location.reload();
   }
 

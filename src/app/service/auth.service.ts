@@ -20,6 +20,7 @@ import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { UserInterface } from '../models/user';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,8 @@ export class AuthService {
   private user: Observable<UserInterface>;
 
   constructor(private _afService: AngularFireAuth,
-    private aFirestore: AngularFirestore) {
+    private aFirestore: AngularFirestore,
+    private router: Router) {
       this.usersCollection = this.aFirestore.collection<UserInterface>('users');
       this.users = this.usersCollection.valueChanges();
     }
@@ -114,7 +116,9 @@ export class AuthService {
    * cerrar sesion de cualquier metodo de inicio de sesion
   */
   public logoutUser() {
-    return this._afService.auth.signOut();
+    return this._afService.auth.signOut().then( () => {
+      this.router.navigate(['/']);
+    });
   }
 
   /**

@@ -75,6 +75,8 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.activeUser = true;
         this.userId = data.uid;
+      } else {
+        this.activeUser = false;
       }
     });
   }
