@@ -46,6 +46,7 @@ import { CommentsPublicComponent } from './components/user/comments-public/comme
 
 // Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgsRevealModule.forRoot(),
     NgxSpinnerModule,
     NgxPaginationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     AngularFireAuth,
