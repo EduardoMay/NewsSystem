@@ -44,6 +44,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentsPublicComponent } from './components/user/comments-public/comments-public.component';
 
+// Animations
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +79,8 @@ import { CommentsPublicComponent } from './components/user/comments-public/comme
     AngularFireStorageModule,
     NgsRevealModule.forRoot(),
     NgxSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AngularFireAuth,
