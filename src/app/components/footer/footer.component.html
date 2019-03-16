@@ -58,9 +58,14 @@
       
         
       </div>
-
+      <!-- Formulario de comentario de pagina -->
       <div class="col-md-4" *ngIf="statusAuth">
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Envia un comentario sobre la pagina</h5>
+        <mat-toolbar color="warn" *ngIf="statusComment">
+          <mat-toolbar-row>
+            <span>No hay comentario</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
         <form #formCommentPage="ngForm" (ngSubmit)="addCommentPage(formCommentPage)" >
           <div class="form-group">
             <label>Comentario</label>
@@ -70,8 +75,9 @@
             <button mat-raised-button type="submit" color="primary" class="btn-block">Enviar</button>
           </div>
         </form>
-
       </div>
+      <!-- /Formulario de comentario de pagina -->
+
       <div class="col-md-4" *ngIf="!statusAuth">
       <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Inicia sesion</h5>
         <a class="nav-link text-white" routerLink="user/login" onclick="window.scrollTo(0,0)">

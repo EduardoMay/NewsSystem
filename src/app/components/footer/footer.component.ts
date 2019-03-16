@@ -25,7 +25,8 @@ import { CommentPagInterface } from 'src/app/models/commentPag';
 export class FooterComponent implements OnInit {
 
   public statusAuth = false;
-  public commentPage: string;
+  public commentPage = '';
+  public statusComment = false;
   public commentSend: CommentPagInterface = {
     idUser: ''
   };
@@ -57,13 +58,20 @@ export class FooterComponent implements OnInit {
    * guardar comentario
   */
   private addCommentPage (formCommentPage: NgForm) {
-    if ( this.commentPage !== null) {
+    if ( this.commentPage !== '') {
       this.commentSend.comment = this.commentPage;
       this.commentSend.date = new Date().getTime();
 
       this._commentsPageServ.addCommentPage(this.commentSend);
 
       formCommentPage.resetForm();
+    } else {
+      console.log('No hay comentario');
+      this.statusComment = true;
+
+      setTimeout(() => {
+        this.statusComment = false;
+      }, 3000);
     }
   }
 
