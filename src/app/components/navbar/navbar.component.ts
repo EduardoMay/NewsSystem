@@ -50,11 +50,9 @@ export class NavbarComponent implements OnInit {
         console.log('Usuario logeado');
         this.getCurrentDataUser(auth.uid);
         this.statusLogin = true;
-        // this.currentUser.name = auth.displayName;
-        // this.currentUser.photo = auth.photoURL;
-        this._authService.getCurrentUser(auth.uid).subscribe( userData => {
-          this.currentUser.photo = userData.photoUrl;
-        });
+
+        this.getCurrentDataUser(auth.uid); // obtener todos los datos del usuario desde la base de datos
+
         this.currentUser.status = true;
       } else {
         console.log('Usuario no logeado');
