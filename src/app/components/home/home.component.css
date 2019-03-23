@@ -14,7 +14,7 @@
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .card-new{
-    width: 70%;
+    width: 100%;
     margin: auto;
   }
 }
@@ -22,7 +22,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .card-new{
-    width: 70%;
+    width: 100%;
     margin: auto;
   }
 }
