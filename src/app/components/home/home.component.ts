@@ -22,6 +22,7 @@ import { LikeInterface } from 'src/app/models/like';
 import { AuthService } from 'src/app/service/auth.service';
 import { LikeService } from 'src/app/service/like.service';
 import { NgsRevealConfig } from 'ng-scrollreveal';
+import { UserInterface } from 'src/app/models/user';
 
 declare var $: any; // para usar el jquery
 
@@ -37,9 +38,13 @@ export class HomeComponent implements OnInit {
   public alert: AlertInterface = {
     active: false
   }; // si existe algun mensage de error
+  public user: UserInterface = {};
   public userId = '';
   public activeUser = false;
   public likes: LikeInterface[] = [];
+
+  private currentDate;
+  public welcomeMessage: string;
 
   constructor(private _dataApi: DataApiService,
     private spinnerService: NgxSpinnerService,
@@ -65,6 +70,25 @@ export class HomeComponent implements OnInit {
     this.getAllLikes(); // obtiene todos los likes del usuario registrado
 
     this.getAllNews(); // obtiene todas las noticias añadiendo el like del usuario
+
+    this.getCurrentDate(); // obtiene la hora actual
+  }
+
+  /**
+   * saber la hora actual
+  */
+  public getCurrentDate() {
+    this.currentDate = new Date().getHours();
+
+    if ( this.currentDate >= 0 && this.currentDate < 12) {
+      this.welcomeMessage = 'Buenos Dias';
+    } else if ( this.currentDate >= 12 && this.currentDate <= 18) {
+      this.welcomeMessage = 'Buenas Tardes';
+    } else if ( this.currentDate > 18 && this.currentDate < 24) {
+      this.welcomeMessage = 'Buenas Noches';
+    }
+
+    console.log(this.currentDate);
   }
 
   /**
@@ -75,10 +99,17 @@ export class HomeComponent implements OnInit {
       if (data) {
         this.activeUser = true;
         this.userId = data.uid;
+        this.user.name = data.displayName;
+
+        this.authService.getCurrentUser( this.userId ).subscribe( dataUser => {
+          this.user.photoUrl = dataUser.photoUrl;
+        });
       } else {
         this.activeUser = false;
       }
+
     });
+
   }
 
   /**
