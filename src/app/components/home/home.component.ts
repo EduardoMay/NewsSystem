@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit {
   private currentDate;
   public welcomeMessage: string;
 
+  public alertFailLogin = false;
+
   constructor(private _dataApi: DataApiService,
     private spinnerService: NgxSpinnerService,
     private _likeService: LikeService,
@@ -102,7 +104,14 @@ export class HomeComponent implements OnInit {
         this.user.name = data.displayName;
 
         this.authService.getCurrentUser( this.userId ).subscribe( dataUser => {
-          this.user.photoUrl = dataUser.photoUrl;
+
+          if (dataUser ) {
+            this.user.photoUrl = dataUser.photoUrl;
+            this.alertFailLogin = false;
+          } else {
+            this.alertFailLogin = true;
+          }
+
         });
       } else {
         this.activeUser = false;

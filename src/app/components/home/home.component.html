@@ -12,6 +12,15 @@
   <!-- ALERTA -->
   <app-alert *ngIf="alert.active" [alert]="alert"></app-alert>
   <!-- /ALERTA -->
+
+  <!-- No realizo el registro correctamente -->
+  <div class="alert alert-warning mt-3" role="alert" *ngIf="alertFailLogin">
+    <h4>No realizo el registro correctamente</h4>
+    <p>
+      Cierra sesion, y en la parte de registro, registrate con la red social que habias iniciado sesion
+    </p>
+  </div>
+  <!-- /No realizo el registro correctamente -->
   
   <div class="row" *ngIf="activeUser">
 

@@ -66,7 +66,11 @@ export class NavbarComponent implements OnInit {
   */
   public getCurrentDataUser(id: string) {
     this._authService.getCurrentUser(id).subscribe( userData => {
-      this.dataUser = userData;
+      if ( userData ) {
+        this.dataUser = userData;
+      } else {
+        console.log('No hay datos del usuario');
+      }
     });
   }
 
